@@ -17,11 +17,13 @@ class BackManager::CategoryController < ApplicationController
     #category = Category.find(params[:id])
     #获取当前栏目下级的最大categoryid
     #@maxcategoryid = Bioer.find_by_sql("select max(categoryid) as categoryid from categories where substring(categoryid,1,3) = '001' and length(categoryid) = 6")
-    @maxcategoryid = Bioer.find_by_sql("select max(categoryid) as categoryid from categories 
-where substring(categoryid,1,length('" + params[:categoryid].to_s + "')) = '" + params[:categoryid].to_s +
-        "' and length(categoryid) = length('" + params[:categoryid].to_s + "') + 3")
-    
-    if @maxcategoryid.size > 0  then      
+    @maxcategoryid = Bioer.find_by_sql(
+      "select max(categoryid) as categoryid 
+       from categories 
+       where substring(categoryid,1,length('#{params[:categoryid].to_s}')) = '#{params[:categoryid].to_s}' 
+             and length(categoryid) = length('#{params[:categoryid].to_s}') + 3")
+
+    if @maxcategoryid.size > 0  then
       for maxcategoryid in @maxcategoryid
         #如何没有下层
         if maxcategoryid.categoryid  != nil then
@@ -29,13 +31,12 @@ where substring(categoryid,1,length('" + params[:categoryid].to_s + "')) = '" + 
           if categoryid.to_s.length == 1  then
             categoryid = "0" + categoryid.to_s
           end
-          @getmaxcategoryid = maxcategoryid.categoryid.slice(0,maxcategoryid.categoryid.length-2) + categoryid
+          @getmaxcategoryid = maxcategoryid.categoryid.slice(0,maxcategoryid.categoryid.length-2).to_s + categoryid.to_s
         else
           @getmaxcategoryid = params[:categoryid] + "001"
         end
       end
-    
-    end 
+    end
 
     @category = Category.new(params[:category])
     #if request.post?  and @category.save
