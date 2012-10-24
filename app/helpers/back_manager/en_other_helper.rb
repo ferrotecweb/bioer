@@ -1,0 +1,2 @@
+module BackManager::EnOtherHelper
+end

@@ -1,0 +1,2 @@
+module CommunioneHelper
+end

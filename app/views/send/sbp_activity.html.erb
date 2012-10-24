@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+<%= stylesheet_link_tag 'info' %>
+<%= javascript_include_tag 'jquery'%>
+<%= javascript_include_tag 'jquery.validate'%>
+<%= javascript_include_tag 'jquery.quickpaginate.packed'%>
+
+<script type="text/javascript">
+$(document).ready(function() {
+ $('#deliver').validate({
+ rules: {
+ a06: {
+ required: true,
+ email: true
+ }
+ }, //end rules
+ messages: {
+ a06: {
+ required: "请输入Email地址.",
+ email: "请输入一个有效的Email地址."
+ }
+ },
+ errorPlacement: function(error, element) {
+ if ( element.is(":radio") || element.is(":checkbox")) {
+ error.appendTo( element.parent());
+ } else {
+ error.insertAfter(element);
+ }
+ }
+
+ });
+}); // end ready()
+</script>
+<title>SBP（Select BioProducts）移液器中文征名活动</title>
+</head>
+
+<body id="body">
+<table width="720" cellspacing="0" cellpadding="0" border="0" align="center" class="bodyText02">
+  <tbody><tr>
+      <td colspan="3"> </td>
+    </tr>
+    <tr>
+      <td colspan="3"><table width="230" cellspacing="0" cellpadding="0" border="0" class="bodyText02">
+          <tbody><tr>
+              <td><img height="48" width="188" src="/images/lrlogo-c.jpg"  alt="bioer"/></td>
+            </tr>
+          </tbody></table>
+      </td>
+    </tr>
+    <tr><td height="20px"></td></tr>
+    <tr>
+      <td width="10%"> </td>
+      <td width="75%"><img height="51" width="401" src="/images/sbp-title.jpg" alt="" /></td>
+      <td width="15%"> </td>
+    </tr>
+
+    <tr>
+      <td><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+      <td bgcolor="#ff6100"><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+      <td><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><br/>
+        <% form_for :mailcontent, :url => { :action => 'dosend'},:html=>{:id=>'deliver',:method => :post} do |m| %>
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table0">
+            <tbody>
+              <tr valign="top">
+                <td class="bodyText02">
+                  <p><b><font color="#f5801f">
+                        来自美国的Select BioProducts移液器，有着数十年的悠久历史；
+                        以出类拔萃的精确性能，经久耐用的优良品质，以及人体工学的完美演绎，享誉欧美市场。
+                        如今博日科技秉承着科技关爱生命的理念，将其带入中国市场，服务于您。
+                        遗憾的是，如此优秀的SBP移液器却没有一个中文名字。
+                        为此，我们诚邀您拿起您手中的生花妙笔，释放您的灵感，为SBP移液器取一个响亮的中文名字吧！
+                        现在参与，还有机会赢取3C时尚数码奖品。还在等什么，赶快加入吧！
+
+
+                      </font></b></p><br />
+                      <% if flash[:error] %>
+                          <div>
+                            <p><strong><%=flash[:error] %></strong></p>
+                          </div>　
+                      <% end -%>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02">
+                  <b><font color="#f5801f">
+                      <textarea style="overflow-x:hidden;font-size:12px;line-height:20px" readonly=true rows="10" cols="90">
+活动细则
+
+名称要求
+参加应征的名称仅限中文简体汉字，拼音、英文或其它语言名称均视为无效。
+活动时间
+即日起至2010年4月18日止，在此期间前后提交的应征申请均不受理。
+评选方法
+「SBP中文名征集活动组委会」从所有应征名称中选出50个作为入围名称，后由评比委员构成的最终评比委员会协商确定其中一个名称为采纳名称。
+结果发布
+4月下旬将在博日科技网站上揭晓获奖结果并最终颁奖。
+参与方法
+登陆博日科技网站（www.bioer.com.cn）即可参加。「SBP中文名征集活动组委会」不接受直接应征，邮件和电话的应征方式也不受理，敬请谅解。
+
+奖项设置
+
+本次活动设采纳奖及入围奖两个奖项：
+采纳奖：1名，奖品为佳能IXUS 95IS数码相机一台。「SBP中文名征集活动组委会」最终确定一个名称为采纳奖名称。如果有多名应征者提交该名称，则按提交时间的先后，选取最早提交者作为采纳奖。
+入围奖：50名，奖品为虎年限量版U盘一个。「SBP中文名征集活动组委会」最终确定50个名称为入围奖名称。如果有多名应征者提交同一入围名称，则按提交时间的先后，选取最早提交者作为入围奖。
+
+您可以拨打热线电话800-857-1279向我们咨询。
+本次活动有关事项的最终解释权归杭州博日科技有限公司所有。
+
+                      </textarea>
+                    </font></b>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table1">
+            <tbody>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">1.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">姓名：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%=  m.text_field :name,:size=>"50",:maxlength=>"500",:id=>"name",:class => "required",:title => "姓名不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">2.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">单位：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :unit,:size=>"50",:maxlength=>"500",:id=>"unit",:class => "required",:title => "单位不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">3.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">电话：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :phone,:size=>"50",:maxlength=>"500",:id=>"phone",:class => "required",:title => "电话不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">4.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">地址：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :address,:size=>"50",:maxlength=>"500",:id=>"address",:class => "required",:title => "地址不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">5.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">邮编：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :zipcode,:size=>"50",:maxlength=>"500",:id=>"zipcode",:class => "required",:title => "邮编不能为空" %>
+                </td>
+              </tr>
+              <!--
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">6.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">Email：(必填项)</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :a06,:size=>"50",:maxlength=>"500",:id => "a06",:name=>"a06" %>
+                </td>
+              </tr>
+              -->
+
+              <!--
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              -->
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f"></font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">（请如实填写，以便我们能及时的将获奖信息和奖品发给您）</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                </td>
+              </tr>
+              <!--
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">9.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">您的个性化需求、意见和建议：</font></b><br /></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_area :a09,:cols=>"55",:rows=>"5"  %>
+                </td>
+              </tr>
+              -->
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td valign="top"><br/><b><font color="#f5801f"><br/><br/>6.</font></b></td>
+                <td>
+                <table width="400"  cellspacing="0" cellpadding="0" border="0" id="table1">
+                <tr>
+                  <td class="bodyText02"></td>
+                  <td class="bodyText02"><b><font color="#f5801f">您是否购买或使用过博日产品或代理产品？（<a href="http://www.bioer.com.cn/productcenter/productcenter?id=001" target='_blank' onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#2E3092'"> 博日产品中心链接 </a>）</font></b></td>
+                </tr>
+                <tr>
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                      <%=m.radio_button :isselect,1,:class=>"required",:title=>"请选择一个"%>是<br/>
+                      <%=m.radio_button :isselect,2%>否<br/>
+                      如果是，请注明产品型号：
+                      <%= m.text_field :producttype,:size=>"50",:maxlength=>"200" %>
+                  </td>
+                </tr>
+                </table>
+                </td>
+                <td><img height="196" width="257" src="/images/info.jpg" alt="" border="0" /></td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">7.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">您为SBP（Select BioProducts）移液器取得中文名字及解释说明是：</font></b></td>
+
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :setname,:size=>"50",:maxlength=>"500" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td width="2%" class="bodyText02"> </td>
+                <td width="98%" class="bodyText02"> </td>
+              </tr>
+            </tbody></table>
+
+
+        <div id ="footer">
+        <p align="center">
+        <%= submit_tag "提交",:id => "submit" %>
+        </p>
+        <br/>
+        </div>
+
+        <% end %>
+      </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

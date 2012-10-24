@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Contact Us</title>
+<style>  
+body 
+{  
+scrollbar-face-color: #ecf3fb;
+scrollbar-highlight-color: #ffffff;
+scrollbar-shadow-color: #cccccc; 
+scrollbar-3dlight-color: buttonface; 
+scrollbar-arrow-color: #000000; 
+scrollbar-track-color: #eaf0f5; 
+scrollbar-darkshadow-color: #ffffff; 
+       
+}  
+</style>  
+<%= stylesheet_link_tag 'content_en' %>
+</head>
+
+<body style='overflow:scroll;overflow-x:hidden'>
+   <div id="banner"><%=@title%></div>
+   <div id="lxwm">
+    <div id="depttop">
+      <% for lxwmtop in @lxwmtop %>
+      <p id="dz1"><%=lxwmtop.company%></p>
+      <p id="dz">Address：<%=lxwmtop.addr%></p>
+      <p id="dz">Operator：<%=lxwmtop.phone%></p>
+      <p id="dz">Fax：<%=lxwmtop.fax%></p>
+      <!--
+          附：email链接说明: 
+          普通电子邮件链接 
+          格式: <a href="mailto:Email地址">链接文字</a> 
+          示例: 我的电子邮件 (<a href="mailto:junminliu@msn.com">我的电子邮件</a>) 
+          带默认标题的电子邮件链接 
+          格式: <a href="mailto:Email地址?subject=默认标题">链接文字</a> 
+          示例: 我的电子邮件（带默认标题） (<a href="mailto:junminliu@msn.com?subject=默认标题">我的电子邮件</a>) 
+          带默认标题、内容的电子邮件链接 
+          格式: <a href="mailto:Email地址?subject=默认标题&body=默认内容">链接文字</a> 
+          示例: 我的电子邮件（带默认标题、内容） (<a href="mailto:junminliu@msn.com?subject=默认标题&body=默认内容">我的电子邮件</a>) 
+          让电子邮件链接中的默认内容换行 
+          格式: <a href="mailto:Email地址?subject=默认标题&body=默认内容%0d%0a换行">链接文字</a> 
+          示例: 我的电子邮件（内容换行） (<a href="mailto:junminliu@msn.com?subject=默认标题&body=默认内容%0d%0a换行1%0d%0a%0d%0a换行2">我的电子邮件</a>)
+      -->
+      <p id="dz">Email：<a href="mailto:'<%=lxwmtop.email%>'"><%=lxwmtop.email%></a></p>
+      <p id="dz">Zip Code：<%=lxwmtop.zipcode%></p>
+      <% end %>
+    </div>
+   </div>
+   <div class="clear"></div>
+   <div id="zgdqimg"></div>
+   <div id="deptdetail">
+     <% for lxwmdetail in @lxwmdetail %>
+     <div id="dept">
+     <table border="0" cellspacing="0" cellpadding="0" align="left">
+      <tr>
+        <td ><font size="-1" style = "font-weight:bold" ><%=lxwmdetail.company%>：</font></td>
+      </tr>
+     </table> 
+     </div>
+     <div id="deptcontent">
+      <% if lxwmdetail.addr != nil and lxwmdetail.addr !="" %> 
+      <p id="dz">Address：<%=lxwmdetail.addr%></p>
+      <% end %>
+
+      <% if lxwmdetail.phone != nil and lxwmdetail.phone !="" %>
+      <p id="dz">Phone：<%=lxwmdetail.phone%></p>
+      <% end %>
+
+      <% if lxwmdetail.handset != nil and lxwmdetail.handset !="" %>
+      <p id="dz">Telephone：<%=lxwmdetail.handset%></p>
+      <% end %>
+
+      <% if lxwmdetail.fax != nil and lxwmdetail.fax !="" %>
+      <p id="dz">Fax：<%=lxwmdetail.fax%></p>
+      <%  end %>
+
+      <% if lxwmdetail.email != nil  and lxwmdetail.email !="" %>
+        <p id="dz">Email：<a href="mailto:'<%=lxwmdetail.email%>'"><%=lxwmdetail.email%></a></p>
+      <%  end %>
+
+      <% if lxwmdetail.zipcode != nil and lxwmdetail.zipcode != "" %>
+      <p id="dz">Zip Code：<%=lxwmdetail.zipcode%></p>
+      <%  end %>
+     </div>
+     <% end  %>
+   </div>
+   <br />
+   <br />
+   <br />
+</body>
+</html>

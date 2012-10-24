@@ -1,0 +1,2 @@
+module ProductcentereHelper
+end

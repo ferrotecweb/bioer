@@ -1,0 +1,95 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+<%= stylesheet_link_tag 'content' %>
+</head>
+
+<body>
+<div id="yylybanner">工作机会</div>
+<!--工作机会-->
+<div id="work1">
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><span>公司人才观理念</span></td>
+  </tr>
+  <tr>
+    <td>1）选人要宁缺勿滥，育人要放手不放心，用人要尊重和信任。</td>
+  </tr>
+  <tr>
+    <td>2）侧重选拔，重视培养，择才而用。</td>
+  </tr>
+  <tr>
+    <td>3）注重能力，高薪聘贤，提高效率，精兵简政。</td>
+  </tr>
+  <tr>
+    <td>4）用人所长，避人所短，人尽其才。</td>
+  </tr>
+  <tr>
+    <td>5）人人是才，量才而用，让合适的人做合适的事。</td>
+  </tr>
+</table>
+</div>
+<div class="clear"></div>
+<div id="bottomimg"></div>
+<div id="work2">
+  <table width="500" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="63"><img src="/images/note_r1_c1.gif" width="63" height="25"></td>
+        <td width="100"><a href="mailto:'hr@bioer.com.cn'">hr@bioer.com.cn</a></td>
+        <td width="51"><img src="/images/note_r1_c3.gif" width="51" height="25"></td>
+        <td width="200">0571-87774565</td>
+      </tr>
+      <tr>
+        <td colspan="4"><span id="work2font2" style="font:normal" >有意者请将中英文简历、学历证明、身份证复印件及近期免冠照片一张email给我们，也可寄至<span id="work2font1" style="font:bold" >：杭州市高新（滨江）区滨安路1192号， 邮政编码 310053</span><br /><span id="work2font2" style="font:normal">面试时请携带上述证件的原件。</span></span>
+        </td>
+      </tr>
+    </table>
+</div>
+<div class="clear"></div>
+<div id="bottomimg"></div>
+<div id="work3">
+  <table id="work3table" width="540" border="0" cellspacing="0" cellpadding="0">
+    <tr id="work3tabletr">
+      <td>职位名称</td>
+      <td>职位类别</td>
+      <td>工作地点</td>
+      <td>发布时间</td>
+      <td>截止时间</td>
+      <td align="center">查看信息</td>
+    </tr>
+    <% for gzjh in @gzjh %>
+    <tr>
+    <td ><%= h(gzjh.depart) %>&nbsp;</td>
+    <td ><%= h(gzjh.poth) %>&nbsp;</td>
+    <td ><%= h(gzjh.workadd) %>&nbsp;</td>
+    <td ><%= h(gzjh.createdate.strftime("%Y-%m-%d")) %>&nbsp;</td>
+    <% if gzjh.overdate != "" and gzjh.overdate != nil  %>
+    <td ><%= h(gzjh.overdate.strftime("%Y-%m-%d")) %>&nbsp;</td>
+    <% else %>
+    <td >&nbsp;</td>
+    <% end %>
+    <td align="center">
+      <a style="cursor:pointer" onClick='window.open("workinfo?id=<%=gzjh.id%>","","scrollbars=yes,width=500,height=300,top=(window.screen.availHeight-30-400)/2"),left= (window.screen.availWidth-10-600)/2'>查看信息
+      </a>   
+    </td>
+    </tr>
+    <% end %>
+
+  </table>
+</div>
+<div id="workfy">
+<%= will_paginate @gzjh,
+:inner_window => 1,
+:outer_window => 1,
+:prev_label => '上一页',
+:next_label => '下一页'
+%>
+</div>
+<br />
+<br />
+<br />
+<br />
+</body>
+</html>

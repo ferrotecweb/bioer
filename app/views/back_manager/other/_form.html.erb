@@ -1,0 +1,54 @@
+
+<%= error_messages_for 'other' %>
+<br/>
+<% 
+    if @flag == 1 then 
+%>
+<p><label for="other_categoryid">所属栏目:</label><br/>
+    <%= select 'other', 'categoryid',
+Category.find_by_sql("select cy.categoryid,case when length(categoryid) = 9 then concat('----',cy.categoryname) else  cy.categoryname  end  as categoryname from
+(select case when length(categoryid) = 3 then categoryname else  concat('----',categoryname)  end  as categoryname,categoryid 
+from categories) cy where (substring(cy.categoryid,1,3) = '005' or substring(cy.categoryid,1,3) = '006') order by cy.categoryid").collect{ |p| [p.categoryname, p.categoryid] },
+                { :include_blank => true },:id=> 'select' %>
+</p>
+<% end %>
+<br/>
+<p><label for="other_country" >国家:</label><br />
+<%= text_field 'other', 'country', :id => 'text' %></p>
+<br/>
+<p><label for="other_area" >地区:</label><br />
+<%= text_field 'other', 'area', :id => 'text' %></p>
+<br/>
+<p><label for="other_province" >省份:</label><br />
+<%= text_field 'other', 'province', :id => 'text' %></p>
+<br/>
+<p><label for="other_company">公司名称:</label><br />
+<%= text_field 'other', 'company', :id => 'text' %></p>
+<br/>
+<p><label for="other_person">联系人:</label><br />
+<%= text_field 'other', 'person', :id => 'text'  %></p>
+<br/>
+<p><label for="other_addr">联系地址:</label><br />
+<%= text_field 'other', 'addr', :id => 'text'  %></p>
+<br/>
+<p><label for="other_phone">联系电话:</label><br />
+<%= text_field 'other', 'phone', :id => 'text'  %></p>
+<br/>
+<p><label for="other_handset">手机号:</label><br />
+<%= text_field 'other', 'handset', :id => 'text'  %></p>
+<br/>
+<p><label for="other_email">电子邮件:</label><br />
+<%= text_field 'other', 'email', :id => 'text'  %></p>
+<br/>
+<p><label for="other_fax">传真:</label><br />
+<%= text_field 'other', 'fax', :id => 'text'  %></p>
+<br/>
+<p><label for="other_zipcode">邮编:</label><br />
+<%= text_field 'other', 'zipcode', :id => 'text'  %></p>
+<br/>
+<p><label for="other_supplybound">代理范围:</label><br />
+<%= text_field 'other', 'supplybound', :id => 'text'  %></p>
+<br/>
+<p><label for="other_content">内容:</label><br />
+<%= text_area'other', 'content', :id => 'textarea'  %></p>
+

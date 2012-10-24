@@ -1,0 +1,2 @@
+module SolveprecentHelper
+end

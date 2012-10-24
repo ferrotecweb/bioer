@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>产品中心</title>
+<%= stylesheet_link_tag 'content' %>
+<style  type="text/css">  
+body 
+{  
+font-size:12px;       
+}  
+body ul{
+font-size:12px;      
+}
+body ul li{
+font-size:12px;      
+}
+</style>  
+
+
+<script>
+<!--
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+parent.document.getElementById("frame1").style.height = this.document.body.scrollHeight;
+parent.setTop();
+}
+//-->
+</script>
+</head>
+
+<body onload="setTab(0,0)">
+  <!--
+  <div id="banner">
+  <%=@name %>
+  <%=@id%>
+  </div>
+  -->
+  <div id="tabs0">
+   <ul id="menu0">
+    <li onclick="setTab(0,0)" class="hover" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'"  >产品简介</li>
+    <li onclick="setTab(0,1)" class="hover" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'"  style="font-size:12px">参数列表</li>
+    <!--<li onclick="setTab(0,2)" class="hover">-->
+    <li class="hover">
+      <a style="cursor:pointer" onClick='window.open("/businessnetwork/businessnetwork?id=005002")'>商务联系</a>
+   </li>
+   </ul>
+   <div id="main0">
+    <% for cpzx in @cpzx %>
+    <ul id="block">
+      <li>
+        <div id="cpjj">
+	<span>  
+          <% if cpzx.summarypic != "" and cpzx.summarypic != nil %>
+          <% @category = cpzx %>
+          <!--<img src="<%=cpzx.summarypic%>" alt="bioer company" align="right" height="138" width="224" hspace = "20"  />-->
+          <%=image_tag url_for_file_column(:category,:summarypic),:height => '101', 
+            :width => '166',:style=> 'float:right;padding-left:15px;' %>
+          <% end %>
+          <pre ><%=cpzx.summary%></pre>
+        
+        </span> 
+
+
+        </div>
+        <div id="cpjj1">
+          <% if cpzx.particularcontent != "" and cpzx.particularcontent != nil %>
+        <span id="cpjjspan"><a href="/content/productdetail?id=<%=cpzx.categoryid%>" target="_blank">详细内容&nbsp;&raquo;</a></span>
+	<% end %>
+        </div>
+        <% for cpzxdetail in @cpzxdetail  %>
+        <div id="cpjjdetail">
+        <div id="cpjjdetailimg">
+          <% if cpzxdetail.summarypic != "" and cpzxdetail.summarypic != nil %>
+          <% @categorylist = cpzxdetail %>
+<!--
+         image_tag url_for_file_column(:categorylist,:summarypic),:height => '96', 
+            :width => '161',:onClick => 'setTab(0,1)',:style=>'cursor:pointer' 
+-->       
+          <% if cpzxdetail.content != "" and cpzxdetail.content != nil %>
+          <a href="/content/productlistdetail?id=<%=cpzxdetail.id%>" target="_blank">
+          <%=image_tag url_for_file_column(:categorylist,:summarypic),:height => '96', 
+            :width => '161',:border => 0,:style=>'cursor:pointer' %>
+          </a>
+          <% else %>
+         <%=image_tag url_for_file_column(:categorylist,:summarypic),:height => '96', 
+            :width => '161',:onClick => 'setTab(0,1)',:style=>'cursor:pointer' %>
+          <% end  %>
+          <% end %>
+        </div>
+
+        <div id="cpjjdetailcontent">
+        <span id="titledetail"><%=cpzxdetail.title%></span><br />
+	<p id="cpjjsummary"><%=truncate(cpzxdetail.summary,120)%></p>
+        </div> 
+        </div>  
+        <% end %>
+      </li></ul>
+      <ul id="block1"><li style="font-size:4px"><div id="cssz" style="overflow: hidden;"><%=cpzx.content%></div></li></ul>
+    <ul></ul>
+    <% end %>
+   </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  
+</body>
+</html>

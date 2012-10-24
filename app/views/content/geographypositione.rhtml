@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Locations</title>
+<%= stylesheet_link_tag 'content_en' %>
+
+<script>
+<!--
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("dt"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body onload="setTab(0,0)" style="overflow-x:hidden">
+  <!--
+  <div id="banner">
+  <%=@name %>
+  <%=@id%>
+  </div>
+  -->
+  <div id="yylybanner">Locations</div>
+  <br />
+  <br />
+  <div id="dlnr">
+    <div id="dlnr1">Bioer Technology CO., LTD R&D Center, Manufacturing Center </div>
+    <div class="clear"></div>
+    <% for dlwz in @dlwz %>
+    <div id="dlnr2">
+      <p>Address：<%=dlwz.addr%></p>
+      <p>Operator：<%=dlwz.phone%></p>
+      <p>Fax：<%=dlwz.fax%></p>
+      <p>Email：<a href="mailto:'<%=dlwz.email%>'"><%=dlwz.email%></a></p>
+      <p>Zip Code：<%=dlwz.zipcode%></p>
+    </div>
+    <% end %>
+   </div>
+  <div id="dldt">
+   <ul id="menu0">
+    <li onclick="setTab(0,0)" class="hover">2D MAP</li>
+    <li onclick="setTab(0,1)" class="hover">3D MAP</li>
+   </ul>
+   <div id="dt0">
+    <ul id="block"><li>
+        <div id="ewdt"><br />
+        <a href="http://www.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=%E6%B5%99%E6%B1%9F%E7%9C%81%E6%9D%AD%E5%B7%9E%E5%B8%82%E6%BB%A8%E6%B1%9F%E5%8C%BA%E6%9D%AD%E5%B7%9E%E5%8D%9A%E6%97%A5%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&sll=30.185311,120.170646&sspn=0.026635,0.03871&ie=UTF8&hq=%E6%9D%AD%E5%B7%9E%E5%8D%9A%E6%97%A5%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&hnear=Binjiang,+Hangzhou,+Zhejiang,+China&ll=30.184235,120.163221&spn=0.053271,0.077419&z=14&iwloc=lyrftr:m,16260000148581208651,30.184636,120.173191" target="_blank">
+        <img src="/images/dlwz5.jpg" alt="二维地图" border="0"   align="bottom"  height="396" width="504" />
+        </a>
+        </div>
+    </li></ul>
+    <ul><li>
+        <div id="swdt"><br />
+        <a href="http://hz.edushi.com/?oid=29361" target="_blank">
+        <img src="/images/dlwz6.jpg" alt="三维地图" border="0"   align="bottom" height="402" width="512" />
+        </a>
+        </div>
+    </li></ul>
+   </div>
+  </div>
+  <br />
+  <br />
+  <br />
+</body>
+</html>

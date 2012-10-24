@@ -1,0 +1,11 @@
+<div id="main">
+ <fieldset>
+    <legend>添加子菜单</legend>
+    <% form_tag :action => 'add_menu' do %>
+      <%= render :partial => 'form' %>
+      <%= submit_tag "添加" %>
+    <% end %>
+
+    <%= link_to '返回', :action => 'list_menu' %>
+ </fieldset>
+</div>

@@ -1,0 +1,48 @@
+<div id="contactdetail">
+<br/>
+<h2>明细留言</h2>
+<br/>
+<table id="table" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="100px" align="right">公司:</td>
+    <td width="600px" ><%=@contact.company%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">姓名:</td>
+    <td><%=@contact.person%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">联系地址:</td>
+    <td ><%=@contact.addr%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">联系电话:</td>
+    <td><%=@contact.phone%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">E_Mail:</td>
+    <td><%=@contact.email%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td id="spical" align="right">留言内容:</td>
+    <td id="spical"><%=@contact.content%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">更新日期:</td>
+    <td><%=@contact.createdate%>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><%= link_to "删除", { # link_to options
+                           :controller => 'contact', 
+                           :action => 'delete_contact',
+                           :id => @contact},
+                         { # html options
+                           :method  => :post,
+                           :confirm => "确定要删除当前留言?"
+                         } %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to '返回', :action => 'list_contact' %></td>
+  </tr>
+</table>
+
+
+</ul
+</div>

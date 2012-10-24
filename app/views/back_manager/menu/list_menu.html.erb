@@ -1,0 +1,47 @@
+<div id="backmenu">
+<br/>
+<h3>菜单一览</h3>
+<br/>
+<!--cellpadding="0" cellspacing="0"-->
+<table id="table" cellpadding="0" cellspacing="0">
+  <tr id="tabletr">
+    <td width="150">菜单名</td>
+    <td width="400">菜单路径</td>
+    <td colspan="2" width="140"></td>
+  </tr>
+  <% for menu in @all_menus %>
+  <tr>
+    <td><%= h(menu.menuname) %>&nbsp;</td>
+    <td><%= h(menu.menuurl) %>&nbsp;</td>  
+    <% if menu.menudeep2 == 1 %>
+    <td colspan="2"  align="center"><%= link_to "添加子菜单", { # link_to options
+                           :controller => 'menu', 
+                           :action => 'add_menu',
+                           :id => menu} %>
+
+    </td>
+    <% else %>
+    <td align="center"><%= link_to "编辑", { # link_to options
+                           :controllerz => 'menu', 
+                           :action => 'edit_menu',
+                           :id => menu},
+                         { # html options
+                           :method  => :post,
+                           :confirm => "确定要修改 #{menu.menuname}?"
+                         } %>
+    </td>
+    <td align="center"><%= link_to "删除", { # link_to options
+                           :controller => 'menu', 
+                           :action => 'delete_menu',
+                           :id => menu},
+                         { # html options
+                           :method  => :post,
+                           :confirm => "确定要删除 #{menu.menuname}?"
+                         } %>
+
+    </td> 
+    <% end %>
+    </tr>
+  <% end %>
+</table>
+</div>

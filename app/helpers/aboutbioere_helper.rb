@@ -1,0 +1,2 @@
+module AboutbioereHelper
+end

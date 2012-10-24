@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>地理位置</title>
+<%= stylesheet_link_tag 'content' %>
+
+<script>
+<!--
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("dt"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body onload="setTab(0,0)" style="overflow-x:hidden">
+  <!--
+  <div id="banner">
+  <%=@name %>
+  <%=@id%>
+  </div>
+  -->
+  <div id="yylybanner">地理位置</div>
+  <br />
+  <br />
+  <div id="dlnr">
+    <div id="dlnr1">杭州博日科技有限公司 研发生产基地</div>
+    <div class="clear"></div>
+    <% for dlwz in @dlwz %>
+    <div id="dlnr2">
+      <p>地址：<%=dlwz.addr%></p>
+      <p>总机：<%=dlwz.phone%></p>
+      <p>传真：<%=dlwz.fax%></p>
+      <p>Email：<a href="mailto:'<%=dlwz.email%>'"><%=dlwz.email%></a></p>
+      <p>邮编：<%=dlwz.zipcode%></p>
+    </div>
+    <% end %>
+   </div>
+  <div id="dldt">
+   <ul id="menu0">
+    <li onclick="setTab(0,0)" class="hover">二维地图</li>
+    <li onclick="setTab(0,1)" class="hover">三维地图</li>
+   </ul>
+   <div id="dt0">
+    <ul id="block"><li>
+        <div id="ewdt"><br />
+        <a href="http://hz.edushi.com/?oid=29361" target="_blank">
+        <img src="/images/dlwz4.jpg" alt="二维地图" border="0"   align="bottom"  height="396" width="504" />
+        </a>
+        </div>
+    </li></ul>
+    <ul><li>
+        <div id="swdt"><br />
+        <a href="http://hz.edushi.com/?oid=29361" target="_blank">
+        <img src="/images/dlwz3.jpg" alt="三维地图" border="0"   align="bottom" height="402" width="512" />
+        </a>
+        </div>
+    </li></ul>
+   </div>
+  </div>
+  <br />
+  <br />
+  <br />
+</body>
+</html>

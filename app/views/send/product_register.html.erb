@@ -1,0 +1,1017 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+
+<%= javascript_include_tag "prototype", "effects", "application" %>
+<%= javascript_include_tag "prototype" %>
+<%= stylesheet_link_tag 'info' %>
+<%= javascript_include_tag 'jquery'%>
+<%= javascript_include_tag 'jquery.validate'%>
+<%= javascript_include_tag 'jquery.quickpaginate.packed'%>
+<%= javascript_include_tag 'WebCalendar'%>
+
+
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function() {
+ jQuery('#deliver').validate({
+ rules: {
+ email: {
+ required: true,
+ email: true
+ }
+ }, //end rules
+ messages: {
+ email: {
+ required: "请输入Email地址.",
+ email: "请输入一个有效的Email地址."
+ }
+ },
+ errorPlacement: function(error, element) {
+ if ( element.is(":radio") || element.is(":checkbox")) {
+ error.appendTo( element.parent());
+ } else {
+ error.insertAfter(element);
+ }
+ }
+
+ });
+jQuery(function(){
+//首页
+jQuery("#table2").hide();
+jQuery("#table3").hide();
+jQuery("#table4").hide();
+jQuery("#table5").hide();
+
+jQuery("#table6").hide();
+jQuery("#footer").hide();
+jQuery("#product").hide();
+jQuery("#question").hide();
+jQuery("#product1").hide();
+jQuery("#question1").hide();
+
+jQuery("#test1").hide();
+jQuery("#test2").hide();
+jQuery("#test3").hide();
+jQuery("#test4").hide();
+jQuery("#test5").hide();
+jQuery("#test6").hide();
+jQuery("#test7").hide();
+jQuery("#test8").hide();
+jQuery("#test9").hide();
+jQuery("#test10").hide();
+jQuery("#test11").hide();
+
+});
+
+
+jQuery(function(){
+//首页的下一页功能
+jQuery("#next_pre").click(function(){
+jQuery("#table1").hide();
+jQuery("#table0").hide();
+jQuery("#next_pre").hide();
+jQuery("#table2").show();
+
+jQuery("#table6").show();
+jQuery("#table0").show();
+jQuery("#user").hide();
+jQuery("#product").show();
+jQuery("#user1").hide();
+jQuery("#product1").show();
+});
+});
+
+jQuery(function(){
+//第二页的上一页功能
+jQuery("#pre11").click(function(){
+jQuery("#table1").show();
+jQuery("#table0").show();
+jQuery("#next_pre").show();
+jQuery("#table2").hide();
+jQuery("#product").hide();
+jQuery("#user").show();
+jQuery("#product1").hide();
+jQuery("#user1").show();
+jQuery("#table6").hide();
+});
+});
+
+jQuery(function(){
+//第二页的下一页功能
+jQuery("#next11").click(function(){
+jQuery("#table3").show();
+jQuery("#table4").show();
+jQuery("#table6").hide();
+jQuery("#table2").hide();
+jQuery("#next_pre1").show();
+jQuery("#product").hide();
+jQuery("#question").show();
+jQuery("#product1").hide();
+jQuery("#question1").show();
+});
+});
+
+
+jQuery(function(){
+//第三页的上一页功能
+jQuery("#pre22").click(function(){
+jQuery("#table3").hide();
+jQuery("#table4").hide();
+jQuery("#footer").hide();
+jQuery("#next_pre1").hide();
+jQuery("#table2").show();
+jQuery("#table6").show();
+jQuery("#question").hide();
+jQuery("#product").show();
+jQuery("#question1").hide();
+jQuery("#product1").show();
+});
+});
+
+jQuery(function(){
+//第三页的下一页功能
+jQuery("#next22").click(function(){
+jQuery("#table3").hide();
+jQuery("#table4").hide();
+jQuery("#footer").show();
+jQuery("#next_pre1").hide();
+jQuery("#table5").show();
+jQuery("#question").hide();
+jQuery("#question1").hide();
+
+jQuery("#table5 tr").eq(1).children("td").eq(1).html(jQuery('#productregisterno').val());
+
+jQuery("#table5 tr").eq(2).children("td").eq(1).html(jQuery('#company').val());
+jQuery("#table5 tr").eq(2).children("td").eq(3).html(jQuery('#dept').val());
+
+jQuery("#table5 tr").eq(3).children("td").eq(1).html(jQuery('#phone').val());
+jQuery("#table5 tr").eq(3).children("td").eq(3).html(jQuery('#fax').val());
+
+jQuery("#table5 tr").eq(4).children("td").eq(1).html(jQuery('#linkman').val());
+jQuery("#table5 tr").eq(4).children("td").eq(3).html(jQuery('#address').val());
+
+var schoolrecord = jQuery('#productregister_schoolrecord').val();
+jQuery("#table5 tr").eq(5).children("td").eq(1).html(schoolrecord);
+jQuery("#table5 tr").eq(5).children("td").eq(3).html(jQuery('#office').val());
+
+jQuery("#table5 tr").eq(6).children("td").eq(1).html(jQuery('#email').val());
+jQuery("#table5 tr").eq(6).children("td").eq(3).html(jQuery('#research').val());
+
+jQuery("#table5 tr").eq(8).children("td").eq(1).html(jQuery('#productname').val());
+jQuery("#table5 tr").eq(8).children("td").eq(3).html(jQuery('#producttype').val());
+
+jQuery("#table5 tr").eq(9).children("td").eq(1).html(jQuery('#productno').val());
+jQuery("#table5 tr").eq(9).children("td").eq(3).html(jQuery('#productdate').val());
+
+jQuery("#table5 tr").eq(10).children("td").eq(1).html(jQuery('#buydate').val());
+jQuery("#table5 tr").eq(10).children("td").eq(3).html(jQuery('#supplier').val());
+
+});
+});
+
+jQuery(function(){
+//显示第一页功能
+jQuery("#next_pre3").click(function(){
+jQuery("#table1").show();
+jQuery("#table0").show();
+jQuery("#next_pre").show();
+jQuery("#table2").hide();
+jQuery("#footer").hide();
+jQuery("#table6").hide();
+jQuery("#table5").hide();
+jQuery("#product").hide();
+jQuery("#user").show();
+jQuery("#product1").hide();
+jQuery("#user1").show();
+jQuery("#question").hide();
+jQuery("#question1").hide();
+});
+});
+
+jQuery(function(){
+//显示第二页功能
+jQuery("#next_pre4").click(function(){
+jQuery("#table3").hide();
+jQuery("#table4").hide();
+jQuery("#footer").hide();
+jQuery("#next_pre1").hide();
+jQuery("#table2").show();
+jQuery("#table6").show();
+jQuery("#footer").hide();
+jQuery("#table5").hide();
+jQuery("#product").show();
+jQuery("#user").hide();
+jQuery("#product1").show();
+jQuery("#user1").hide();
+jQuery("#question").hide();
+jQuery("#question1").hide();
+});
+});
+jQuery(function(){
+  jQuery("#company").focus( function(){
+    if (jQuery("#company").val() == "")
+    {
+      jQuery("#test1").show();
+    }
+
+  } );
+  jQuery("#company").blur( function(){
+    if (jQuery("#company").val() == "")
+    {
+      jQuery("#test1").show();
+    }
+    else
+    {
+      jQuery("#test1").hide();
+    }
+  } );
+  
+  jQuery("#dept").focus( function(){
+    if (jQuery("#dept").val() == "")
+    {
+      jQuery("#test2").show();
+    }
+
+  } );
+  jQuery("#dept").blur( function(){
+    if (jQuery("#dept").val() == "")
+    {
+      jQuery("#test2").show();
+    }
+    else
+    {
+      jQuery("#test2").hide();
+    }
+  } );
+  jQuery("#phone").focus( function(){
+    if (jQuery("#phone").val() == "")
+    {
+      jQuery("#test3").show();
+    }
+
+  } );
+  jQuery("#phone").blur( function(){
+    if (jQuery("#phone").val() == "")
+    {
+      jQuery("#test3").show();
+    }
+    else
+    {
+      jQuery("#test3").hide();
+    }
+  } );
+  jQuery("#fax").focus( function(){
+    if (jQuery("#fax").val() == "")
+    {
+      jQuery("#test4").show();
+    }
+
+  } );
+  jQuery("#fax").blur( function(){
+    if (jQuery("#fax").val() == "")
+    {
+      jQuery("#test4").show();
+    }
+    else
+    {
+      jQuery("#test4").hide();
+    }
+  } );
+
+  jQuery("#address").focus( function(){
+    if (jQuery("#address").val() == "")
+    {
+      jQuery("#test5").show();
+    }
+
+  } );
+  jQuery("#address").blur( function(){
+    if (jQuery("#address").val() == "")
+    {
+      jQuery("#test5").show();
+    }
+    else
+    {
+      jQuery("#test5").hide();
+    }
+  } );
+
+  jQuery("#linkman").focus( function(){
+    if (jQuery("#linkman").val() == "")
+    {
+      jQuery("#test6").show();
+    }
+
+  } );
+  jQuery("#linkman").blur( function(){
+    if (jQuery("#linkman").val() == "")
+    {
+      jQuery("#test6").show();
+    }
+    else
+    {
+      jQuery("#test6").hide();
+    }
+  } );
+
+  jQuery("#email").focus( function(){
+    if (jQuery("#email").val() == "")
+    {
+      jQuery("#test7").show();
+    }
+
+  } );
+  jQuery("#email").blur( function(){
+    if (jQuery("#email").val() == "")
+    {
+      jQuery("#test7").show();
+    }
+    else
+    {
+      jQuery("#test7").hide();
+    }
+  } );
+
+
+  jQuery("#productname").focus( function(){
+    if (jQuery("#productname").val() == "")
+    {
+      jQuery("#test8").show();
+    }
+
+  } );
+  jQuery("#productname").blur( function(){
+    if (jQuery("#productname").val() == "")
+    {
+      jQuery("#test8").show();
+    }
+    else
+    {
+      jQuery("#test8").hide();
+    }
+  } );
+
+  jQuery("#producttype").focus( function(){
+    if (jQuery("#producttype").val() == "")
+    {
+      jQuery("#test9").show();
+    }
+
+  } );
+  jQuery("#producttype").blur( function(){
+    if (jQuery("#producttype").val() == "")
+    {
+      jQuery("#test9").show();
+    }
+    else
+    {
+      jQuery("#test9").hide();
+    }
+  } );
+
+  jQuery("#productno").focus( function(){
+    if (jQuery("#productno").val() == "")
+    {
+      jQuery("#test10").show();
+    }
+
+  } );
+  jQuery("#productno").blur( function(){
+    if (jQuery("#productno").val() == "")
+    {
+      jQuery("#test10").show();
+    }
+    else
+    {
+      jQuery("#test10").hide();
+    }
+  } );
+
+  jQuery("#supplier").focus( function(){
+    if (jQuery("#supplier").val() == "")
+    {
+      jQuery("#test11").show();
+    }
+
+  } );
+  jQuery("#supplier").blur( function(){
+    if (jQuery("#supplier").val() == "")
+    {
+      jQuery("#test11").show();
+    }
+    else
+    {
+      jQuery("#test11").hide();
+    }
+  } );
+
+});
+}); // end ready()
+</script>
+<title>产品注册</title>
+</head>
+
+<body id="body">
+<table width="720" cellspacing="0" cellpadding="0" border="0" align="center" class="bodyText02">
+  <tbody>
+    <tr>
+      <td colspan="3"> </td>
+    </tr>
+    <tr>
+      <td colspan="3"><table width="230" cellspacing="0" cellpadding="0" border="0" class="bodyText02">
+          <tbody><tr>
+              <td><img height="48" width="188" src="/images/lrlogo-c.jpg"  alt="bioer"/></td>
+            </tr>
+          </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td width="10%"> </td>
+      <td width="75%"><img height="51" width="401" src="/images/t-web-survey2.jpg" alt="" /></td>
+      <td width="15%"> </td>
+    </tr>
+    <tr>
+      <td><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+      <td bgcolor="#ff6100"><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+      <td><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><br/>
+        <% form_for :productregister, :url => { :action => 'saveregisterinfo'},:multipart=>true,:html=>{:id=>'deliver',:method => :post} do |m| %>
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table0">
+            <tbody>
+              <tr valign="top">
+                <td class="bodyText02">
+                  <div id="user">
+                  <p><b><font color="#f5801f">
+                        请正确填写以下内容，带（*）号的为必填项，我们承诺对您的个人信息完全保密。
+                      </font></b></p><br />
+                  </div>
+                  <div id="product"><b><font color="#f5801f">请正确填写以下内容，带（*）号的为必填项</font></b></div>
+                  <div id="question"><b><font color="#f5801f">请仔细填写以下问卷内容</font></b></div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02">
+                  <div id="user1"><b><font color="#f5801f">个人资料</font></b></div>
+                  <div id="product1"><br /><b><font color="#f5801f">产品信息</font></b></div>
+                  <div id="question1"><br /><b><font color="#f5801f">产品调查</font></b></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table1">
+            <tbody>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f"></font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">仪器注册号：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%=  m.text_field :productregisterno ,:size=>"50",:maxlength=>"255",:readonly => true,:id => "productregisterno" %>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">1.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">单位*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%=  m.text_field :company,:size=>"50",:maxlength=>"500",:id=>"company",:class => "required",:title => "单位不能为空" %> 
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test1" class="onError">单位不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">2.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">部门/科室/实验室*：</font></b></td>
+
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :dept,:size=>"50",:maxlength=>"255",:id=>"dept",:class => "required",:title => "部门/科室/实验室不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test2" class="onError">部门/科室/实验室不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">3.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">电话*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :phone,:size=>"50",:maxlength=>"255",:id=>"phone",:class => "required",:title => "电话不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test3" class="onError">电话不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">4.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">传真*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :fax,:size=>"50",:maxlength=>"255",:id=>"fax",:class => "required",:title => "传真不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test4" class="onError">传真不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">5.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">地址*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :address,:size=>"50",:maxlength=>"255",:id=>"address",:class => "required",:title => "地址不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test5" class="onError">地址不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">6.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">联系人*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :linkman,:size=>"50",:maxlength=>"255",:id=>"linkman",:class => "required",:title => "联系人不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test6" class="onError">联系人不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">7.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">学历：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <!--{"高中以下" => '0', "高中毕业" => '2'} -->
+                  <%= m.select :schoolrecord,[["高中以下","高中以下"],["高中毕业","高中毕业"],["中等专科毕业","中等专科毕业"],["大学专科毕业","大学专科毕业"],["大学本科毕业","大学本科毕业"],["更高学历","更高学历"]],:id => "school_id"  %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">8.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">职位：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :office,:size=>"50",:maxlength=>"255",:id => "office" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">9.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">Email*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :email,:size=>"50",:maxlength=>"255",:id => "email",:name=>"email" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test7" class="onError">Email不能为空</div>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">10.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">研究方向：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :research,:size=>"50",:maxlength=>"255",:id => "research" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td width="2%" class="bodyText02"> </td>
+                <td width="98%" class="bodyText02"> </td>
+              </tr>
+            </tbody></table>
+
+          <div id="next_pre"><a style="cursor:pointer;color:#f5801f">下一页</a></div>
+
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table2">
+            <tbody>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f"></font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">仪器注册号：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%=  m.text_field :productregisterno ,:size=>"50",:maxlength=>"255",:readonly => true %>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">1.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">产品名称*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%=  m.text_field :productname,:size=>"50",:maxlength=>"255",:id=>"productname",:class => "required",:title => "产品名称不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test8" class="onError">产品名称不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">2.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">型号*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :producttype,:size=>"50",:maxlength=>"255",:id=>"producttype",:class => "required",:title => "产品型号不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test9" class="onError">型号不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">3.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">产品编号*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :productno,:size=>"50",:maxlength=>"255",:id=>"productno",:class => "required",:title => "产品编号不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test10" class="onError">产品编号不能为空</div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">4.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">生产日期*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :productdate,:onclick=> "SelectDate(this,'yyyy-MM-dd')",:size=>"10", :id=>"productdate",:class => "required",:title => "生产日期不能为空",:readonly => true %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">5.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">购买日期*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :buydate,:onclick=> "SelectDate(this,'yyyy-MM-dd')",:size=>"10", :id=>"buydate",:class => "required",:title => "购买日期不能为空",:readonly => true %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">6.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">供应商*：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :supplier,:size=>"50",:maxlength=>"255",:id=>"supplier",:class => "required",:title => "供应商不能为空" %>
+                </td>
+                <td class="bodyText02">
+                  <div style="width: 250px;" id="test11" class="onError">供应商不能为空</div>
+                </td>
+              </tr>
+
+
+
+
+
+              <tr>
+                <td width="2%" class="bodyText02"> </td>
+                <td width="98%" class="bodyText02"> </td>
+              </tr>
+
+              <tr id="tr2"><td class="bodyText02"></td><td class="bodyText02"><div id="next_pre"><div id="pre11"><a style="cursor:pointer;color:#f5801f">上一页</a></div><div id="next11"><a style="cursor:pointer;color:#f5801f">下一页</a></div></div></td><td class="bodyText02"></td></tr>
+            </tbody></table>
+       
+
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table3">
+            <tr valign="center">
+              <td class="bodyText02"><p><b><font color="#f5801f" size =4></font></b></p>          
+              </td>
+            </tr>
+           
+          </table>
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table4">
+              <tbody>
+                 <!--题目1-->
+                <tr  id="tr1">
+                  <td class="bodyText02"><b><font color="#f5801f">1. </font></b></td>
+                  <td class="bodyText02"><b><font color="#f5801f">产品使用频度</font></b></td>
+                </tr>
+
+                <tr  id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                    <%=m.radio_button :productusedtime,1,:class=>"required",:title=>"请选择一个"%>1<br/>
+                    <%=m.radio_button :productusedtime,2%>2<br/>
+                    <%=m.radio_button :productusedtime,3%>3<br/>
+                    <%=m.radio_button :productusedtime,4%>4<br/>
+                    <%=m.radio_button :productusedtime,5%>5<br/>
+                    <%=m.radio_button :productusedtime,6%>>5次
+                  </td>
+                </tr>
+
+                <!--题目2-->
+                <tr  id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02"> </td>
+                </tr>
+                <tr  id="tr1">
+                  <td valign="top" class="bodyText02"><b><font color="#f5801f">2.
+                      </font></b></td>
+                  <td class="bodyText02"><b><font color="#f5801f">产品使用感受？</font></b></td>
+                </tr >
+                <tr  id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                    <%=m.radio_button :productusedfeel,1,:class=>"required",:title=>"请选择一个"%>很满意<br/>
+                    <%=m.radio_button :productusedfeel,2%>满意<br/>
+                    <%=m.radio_button :productusedfeel,3%>一般<br/>
+                    <%=m.radio_button :productusedfeel,4%>不满意<br/>
+                    <%=m.radio_button :productusedfeel,5%>很不满意
+                  </td>
+                </tr>
+
+                <!--题目3-->
+
+                <tr id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02"> </td>
+                </tr>
+                <tr id="tr1">
+                  <td valign="top" class="bodyText02"><b><font color="#f5801f">3.</font></b></td>
+                  <td class="bodyText02"> <b><font color="#f5801f">实验室同类型其他品牌仪器</font></b></td>
+                </tr>
+                <tr id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                    品牌:<%= m.text_field :otherproductname,:size=>"50",:maxlength=>"255" %><br/><br/>
+                    型号:<%= m.text_field :otherproducttype,:size=>"50",:maxlength=>"255" %>
+                  </td>
+                </tr>
+
+                <!--题目4-->
+                <tr id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                  </td>
+                </tr>
+                <tr id="tr1">
+                  <td valign="top" class="bodyText02"><b><font color="#f5801f">4.</font></b></td>
+                  <td valign="top" class="bodyText02"><b><font color="#f5801f">对博日其他什么产品感兴趣</font></b></td>
+                </tr>
+                <tr  id="tr1">
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                      <%= m.check_box :otherproductfeel,{:class=>"required",:title=>"请最少选择一个",:name=> "otherproductfeel[]"},"1","0"  %>
+                      定量PCR仪 <br/>
+                      <%= m.check_box :otherproductfeel1,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      普通PCR仪 <br/>
+                      <%= m.check_box :otherproductfeel2,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      金属浴 <br/>
+                      <%= m.check_box :otherproductfeel3,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      水槽 <br/>
+                      <%= m.check_box :otherproductfeel4,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      电泳 <br/>
+                      <%= m.check_box :otherproductfeel5,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      移液器 <br/>
+                      <%= m.check_box :otherproductfeel6,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      超微量分光光度计 <br/>
+                      <%= m.check_box :otherproductfeel7,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      混匀仪 <br/>
+                      <%= m.check_box :otherproductfeel8,{:name=> "otherproductfeel[]"},"1","0"  %>
+                      离心机 <br/>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02"> </td>
+                </tr>
+                <tr>
+                  <td class="bodyText02"><b><font color="#f5801f">5.</font></b></td>
+                  <td class="bodyText02"><b><font color="#f5801f">对博日产品的建议</font></b><br /></td>
+                </tr>
+                <tr>
+                  <td class="bodyText02"> </td>
+                  <td class="bodyText02">
+                    <%= m.text_area :memo,:cols=>"55",:rows=>"5"  %>
+                  </td>
+                </tr>
+
+                <tr id="tr2"><td class="bodyText02"></td><td class="bodyText02"><div id="next_pre1"><div id="pre22"><a style="cursor:pointer;color:#f5801f">上一页</a></div><div id="next22"><a style="cursor:pointer;color:#f5801f">下一页</a></div></div></td></tr>
+              </tbody>
+            </table>
+
+
+
+          <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table5">
+            <tr><td colspan="4"><h4>注册信息最终确认(*号为必输项)</h4></td></tr>
+            <tr><td colspan="2">仪器注册号</td><td colspan="2"></td></tr>
+            <tr>
+              <td>单位*</td><td></td>
+              <td>部门/科室/实验室*</td><td></td>
+            </tr>
+            <tr>
+              <td>电话*</td><td></td>
+              <td>传真*</td><td></td>
+            </tr>
+            <tr>
+              <td>联系人*</td><td></td>
+              <td>地址*</td><td></td>
+            </tr>
+            <tr>
+              <td>学历</td><td></td>
+              <td>职位</td><td></td>
+            </tr>
+            <tr>
+              <td>电子邮箱*</td><td></td>
+              <td>研究方向</td><td></td>
+            </tr>
+
+            <tr id="tr2">
+              <td class="bodyText02" colspan="3"></td>
+              <td class="bodyText02"><div id="next_pre3"><a style="cursor:pointer;color:#f5801f">返回用户信息页</a></div></td>
+            </tr>
+
+            <tr>
+              <td>产品名称*</td><td></td>
+              <td>型号*</td><td></td>
+            </tr>
+            <tr>
+              <td>产品编号*</td><td></td>
+              <td>生产日期*</td><td></td>
+            </tr>
+            <tr>
+              <td>购买日期*</td><td></td>
+              <td>供应商*</td><td></td>
+            </tr>
+            <tr>
+              <td>购买凭证*</td>
+              <td colspan="3">
+                <div id ="showimage"><b style="color:red;">必须上传购买凭证</b></div>
+              </td>
+            </tr>
+            <tr id="tr2">
+              <td class="bodyText02" colspan="3"></td>
+              <td class="bodyText02"><div id="next_pre4"><a style="cursor:pointer;color:#f5801f">返回产品信息页</a></div></td>
+            </tr>
+          </table>
+          <div id ="footer">
+            <p align="center">
+            <%= submit_tag "确认提交",:id => "submit" %>
+            </p>
+            <br/>
+          </div>
+
+        <% end %>
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" id="table6">
+        <tr>
+        <td class="bodyText02"> </td>
+        <td class="bodyText02"> </td>
+        </tr>
+        <tr>
+        <td class="bodyText02"><b><font color="#f5801f"></font></b></td>
+        <td class="bodyText02"><b><font color="#f5801f">购买凭证（发票凭证--只能上传jpg、gif文件，文件大小不要超出1M）</font></b></td>
+        </tr>
+        <tr>
+        <td class="bodyText02"> </td>
+        <td class="bodyText02">
+          <% form_for :photo,:url=>{:action=>"photo_import"},:html => {:multipart => true,:target => 'upload_frame'} do |f| %>
+          <%=f.file_field :photoname %>
+          <%=f.submit '上传'%>
+          <% end %>  
+          <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+          <div id="show"></div>
+        </td>
+        </tr>
+        </table>
+                <!--返回顶部的js代码，目前代码备份在集团网站目录下-->
+      </td>
+      <td> </td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+</body>
+</html>

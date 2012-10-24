@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>留言版</title>
+<%= stylesheet_link_tag 'content' %>
+<style type="text/css">
+<!--
+.style1 {color: #999999}
+.style22 {font-size: 12px}
+.style14 {font-size: 12px; color: #003559; }
+.style2 {
+  font-size: 12px; color: #FFFFFF;text-align:center; 
+      border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #ffffff;
+}
+-->
+</style>
+</head>
+
+<body>
+<% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+<% end -%>
+<br/>
+<br/>
+<div id="communion1"><span>如果您有意见或建议，请留言给我们</span></div>
+<div id="communion2">
+  <table width="530"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="63"><img src="/images/note_r1_c1.gif" width="63" height="25" /></td>
+        <td width="140"><a href="mailto:'bioer@bioer.com.cn'">bioer@bioer.com.cn</a></td>
+        <td width="46"><img src="/images/note_r1_c2.gif" width="46" height="25" /></td>
+        <td width="100">+8657187774319</td>
+        <td width="51"><img src="/images/note_r1_c3.gif" width="51" height="25" /></td>
+        <td width="80">+8657187774539</td>
+      </tr>
+    </table>
+</div>
+
+<% form_tag :action => 'add_communion',:object => @contact,:multipart=>true do %>
+<div id="communion3">
+      <table id="communiontable" width="480" border="0" align="left" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr valign="baseline">
+          <td width="1"></td>
+          <td width="100" bgcolor="#999999" class="style2"><div align="center"> 公司</div></td>
+          <td width="354"><div align="left">
+              <% @contact.categoryid = @menu %>
+              <%= hidden_field 'contact', 'categoryid'  %>
+              <%= text_field 'contact', 'company' ,:size=> 40  %>
+          </div></td>
+        </tr>
+        <tr valign="baseline">
+          <td width="1"></td>
+          <td width="100" bgcolor="#999999" class="style2"><div align="center"> 姓名</div></td>
+          <td><div align="left">
+              <%= text_field 'contact', 'person' ,:size=> 40  %>
+          </div></td>
+        </tr>
+        <tr valign="baseline">
+          <td width="1"></td>
+          <td width="100" bgcolor="#999999" class="style2"><div align="center" class="style22"> 地址</div></td>
+          <td><div align="left">
+              <%= text_field 'contact', 'addr' ,:size=> 40  %>
+          </div></td>
+        </tr>
+        <tr valign="baseline">
+          <td width="1"></td>
+          <td width="100" bgcolor="#999999" class="style2"><div align="center" class="style22"> 电话 </div></td>
+          <td><div align="left" class="style14">
+              <div align="left">
+                <%= text_field 'contact', 'phone' ,:size=> 40  %>
+            *必须为数字 </div>
+          </div></td>
+        </tr>
+        <tr valign="baseline">
+          <td width="1"></td>
+          <td width="100" bgcolor="#999999" class="style2"><div align="center" class="style22"> Email </div></td>
+          <td><div align="left" class="style14">
+              <div align="left">
+                <%= text_field 'contact', 'email' ,:size=> 40  %>
+            *必须为邮件地址 </div>
+          </div></td>
+        </tr>
+        <tr>
+          <td width="1"></td>
+          <td width="100" height="137" align="right" valign="top" nowrap bgcolor="#999999" class="style2"><p>&nbsp;</p>
+              <p align="center">留言</p></td>
+          <td valign="baseline"><div align="left">
+            <%= text_area 'contact', 'content' ,:cols => 50, :rows => 13  %>
+          </div></td>
+        </tr>
+    </table>
+
+</div>
+<div class ="clear"></div>
+<div align="center" id="buttom"><%= submit_tag "提交" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= submit_tag "重置" %>
+</div>
+<% end %>
+</body>
+</html>

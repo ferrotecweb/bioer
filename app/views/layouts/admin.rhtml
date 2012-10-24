@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>后台</title>
+<%= stylesheet_link_tag 'basic' %>
+<%= stylesheet_link_tag 'menu' %>
+
+<%= javascript_include_tag "fckeditor/fckeditor" %>  
+<%= javascript_include_tag "sdmenu.js" %> 
+<%= javascript_include_tag 'WebCalendar'%> 
+
+  <script type="text/javascript">
+  // <![CDATA[
+  var myMenu;
+  window.onload = function() {
+          myMenu = new SDMenu("my_menu");
+          myMenu.init();
+  };
+  // ]]>
+  </script>
+</head>
+<body id="">
+  <div id="">
+    <div id="menu">
+    <%= render :partial => '/layouts/menu' %>
+    </div>
+    <div id="">
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+      <%= yield :layout %>
+    </div>
+  </div>
+</body>
+</html>

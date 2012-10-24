@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title><%=@title%></title>
+<%= stylesheet_link_tag 'content_en' %>
+</head>
+
+<body id="body" onload="parent.document.getElementById('frame1').style.height=this.document.body.scrollHeight">
+<!--产品大类-->
+ <div id="yylybanner"><%=@title%></div>
+ <% for cpdl in @cpdl %>
+ <div id="cpdl1">
+    <pre><p id="productdetail"> <%=cpdl.summary%></p></pre>
+ </div>
+ <div id="cpdl3"></div>
+ <div id="cpdl2">
+   <% for cpdldetail in @cpdldetail %>  
+     <% if cpdldetail.summarypic != "" and cpdldetail.summarypic != nil %>
+        <% @category = cpdldetail %>
+        <span id="imageheight">
+        <a onclick="showmenu('<%=cpdldetail.categoryid%>','<%=cpdldetail.url%>')" style="cursor:pointer">
+        <%=image_tag url_for_file_column(:category,:summarypic),:height => '101', 
+          :width => '166',:border => 0,:class=>'image' %>
+        </a>
+        </span>
+    <% end %>
+   <% end %>
+ </div>
+ <% end %>
+<script language="JavaScript" type="text/JavaScript">
+//主菜单单击事件
+function showmenu(paremenuID,url)
+{ 
+    //主菜单变色
+    parent.document.getElementById("menutop2").style.color='#000000';
+    parent.document.getElementById("menutop2").style.backgroundImage='url(/images/memu_r9_c1.jpg)';
+   
+    if (paremenuID.length > 6)
+    {
+        parent.init2(); 
+        //菜单变色
+        parent.document.getElementById(paremenuID).style.backgroundImage='url(/images/memu_r5_c1.jpg)';
+        parent.clickCID = paremenuID;    
+    }
+    else
+    {
+        //展开菜单并更换颜色
+        parent.document.getElementById(paremenuID).style.backgroundImage='url(/images/memu_r2_c1.jpg)';
+        parent.document.getElementById("child"+paremenuID).style.display = "";
+        parent.clickPID = paremenuID;
+    }
+    
+    //转到链接
+    parent.document.getElementById(paremenuID).style.color='#FFFFFF';
+    parent.document.getElementById("frame1").src = url;
+  
+}
+</script>
+  <br />
+  <br />
+
+</body>
+</html>

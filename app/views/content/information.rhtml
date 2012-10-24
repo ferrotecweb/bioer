@@ -1,0 +1,30 @@
+<!--#include file="../../asp/inc/conn.asp"-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<title>详细信息</title>
+<%= stylesheet_link_tag 'content' %>
+</head>
+<body>
+<div id="information">
+<table id ="workinformation" width="80%" height="250"  border="0" align="center" cellpadding="0" cellspacing="0">
+    <% if @info.size == 0  %>
+    <tr><td  style="WORD-BREAK: break-all">无符合记录</td></tr> 
+    <%  else %>
+        <% for info in @info %>
+        <tr>
+          <td width="250" height="30"><%=info.title %>&nbsp;</td>
+        </tr>
+        <tr><td><HR width="100%" color="#cccccc" noShade size="3"></td></tr>
+        <tr>
+            <td valign="top" style="WORD-BREAK: break-all" width="300" height="200"><%=info.summary %>&nbsp;</td>
+        </tr>
+        <% end %>
+    <% end %>
+</table>
+</div>
+</body>
+</html>

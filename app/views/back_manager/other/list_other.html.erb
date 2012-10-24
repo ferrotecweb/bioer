@@ -1,0 +1,48 @@
+<div id="other">
+<br/>
+<h3>公司内容</h3>
+<br/>
+<!--cellpadding="0" cellspacing="0"-->
+<table id="table" cellpadding="0" cellspacing="0" >
+  <tr id="tabletr">
+  <td width="80px" >所属栏目</td>
+  <td width="80px">国家</td>
+  <td width="70px" >地区</td>
+  <td width="250" >公司名称</td> 
+  <td width="70" >联系人</td>  
+  <td colspan="2" width="120" align="center"><%= link_to "添加内容", :controller => 'other', :action => 'add_other' %></td>
+  </tr>
+  <% for other in @all_others %>
+  <tr>
+    <td ><%= h(other.category.categoryname) %>&nbsp;</td>
+    <td ><%= h(other.country) %>&nbsp;</td>
+    <td ><%= h(other.area) %>&nbsp;</td>
+    <td ><%= h(other.company) %>&nbsp;</td>
+    <td ><%= h(other.person) %>&nbsp;</td>
+    <td align="center"><%= link_to "编辑", { # link_to options
+                           :controller => 'other', 
+                           :action => 'edit_other',
+                           :id => other} %>
+  </td>
+  <td align="center"><%= link_to "删除", { # link_to options
+                           :controller => 'other', 
+                           :action => 'delete_other',
+                           :id => other},
+                         { # html options
+                           :method  => :post,
+                           :confirm => "确定要删除?"
+                         } %>
+
+  </td>  
+  </tr>
+  <% end %>
+</table>
+</div>
+<div id="fy">
+<%= will_paginate @all_others,
+:inner_window => 1,
+:outer_window => 1,
+:prev_label => '上一页',
+:next_label => '下一页'
+%>
+</div>

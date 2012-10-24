@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>News</title>
+<%= stylesheet_link_tag 'content_en' %>
+<%= stylesheet_link_tag 'basic_en' %>
+</head>
+
+<body>
+  <div id="yylybanner">News</div>
+  <div class="clear"></div>
+  <div id="newslm">&nbsp;&nbsp;&nbsp;Announcement:</div>
+  <div id="bestnewcontent" ><%=@summary%></div>
+
+  <div id="newcontent">
+    <span  id="bestnewstitle">News Title:</span><br />
+    <ul id="newstitle">
+    <% if @categorylist.size > 0 %>
+    <% for categorylist in @categorylist %>
+    <li>
+      <a href="#" style="cursor:pointer" onClick='window.open("newsdetaile?id=<%=categorylist.id%>","","scrollbars=yes,width=600,height=360,top=200,resizable=yes")'>
+      <span id="title"><%=truncate(categorylist.title,70)%></span>
+      <% if categorylist.createdate != "" and categorylist.createdate != nil  %>
+      <span id="date"><%= h(categorylist.createdate.strftime("%Y-%m-%d")) %></span>
+      <% end %>
+      </a>
+    </li> 
+    <% end %>
+    <% else %>
+    <li><span id="title">Current age has no news information </span></li>
+    <% end %>
+    </ul>
+  </div>
+    <div id="fy1">
+    <%= will_paginate @categorylist,
+    :inner_window => 1,
+    :outer_window => 1,
+    :prev_label => 'Previous ',
+    :next_label => 'Next'
+    %>
+  </div>
+</body>
+</html>

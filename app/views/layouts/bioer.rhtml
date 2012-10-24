@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<%= stylesheet_link_tag 'basic' %>
+<%= javascript_include_tag :defaults %>
+<style type="text/css">
+/* common styling */
+/* set up the overall width of the menu div, the font and the margins */
+.menu {
+	font-family: arial, sans-serif;
+	width:781px;
+	margin:0;
+        padding:0; 
+	/*margin:1px;*/
+}
+/* remove the bullets and set the margin and padding to zero for the unordered list */
+.menu ul {
+padding:0; 
+margin:0;
+list-style-type: none;
+}
+/* float the list so that the items are in a line and their position relative so that the drop down list will appear in the right place underneath each list item */
+.menu ul li {
+float:left; 
+position:relative;
+}
+/* style the links to be 104px wide by 30px high with a top and right border 1px solid white. Set the background color and the font size. */
+.menu ul li a, .menu ul li a:visited {
+display:block; 
+text-align:center; 
+text-decoration:none; 
+width:103px; 
+height:24px; 
+color:#FFFFFF; 
+border:0px solid #fff;
+border-width:0px 0px 0 0;
+background-image: url(/images/middle1.jpg);
+line-height:24px; 
+font-size:12px;
+}
+/* make the dropdown ul invisible */
+.menu ul li ul {
+display: none;
+}
+/* specific to non IE browsers */
+/* set the background and foreground color of the main menu li on hover */
+.menu ul li:hover a {
+color:#fff; 
+background:#b3ab79;
+background-image: url(/images/middle3.jpg);
+}
+/* make the sub menu ul visible and position it beneath the main menu list item */
+.menu ul li:hover ul {
+display:block; 
+position:absolute; 
+top:24px; 
+left:0; 
+width:125px;
+}
+/* style the background and foreground color of the submenu links */
+.menu ul li:hover ul li a {
+display:block; 
+background:#FFFFFF; 
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #000000; 
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #000000; 
+height:18px;
+line-height:18px;
+text-align:left;
+padding-left:4px;
+color:#000; 
+}
+/* style the background and forground colors of the links on hover */
+.menu ul li:hover ul li a:hover {
+/* background:#dfc184; */
+background:#CCCCCC; 
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #000000;  
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #000000;  
+color:#000;
+}
+.menu ul li.left a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/left.jpg);
+}
+.menu ul li.right a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/right.jpg);
+}
+.menu ul li.aa a{
+background-image: url(/images/middle2.jpg);
+width:130px;
+}
+.menu ul li.aa a:hover {
+background-image: url(/images/middle3.jpg);  
+color:#000;
+}
+.menu ul li.aa a:hover ul.bb a{
+width:131px;
+text-align:left;
+padding-left:4px;
+/*text-align:left;*/
+}
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+/* styling specific to Internet Explorer IE5.5 and IE6. Yet to see if IE7 handles li:hover */
+/* Get rid of any default table style */
+table {
+border-collapse:collapse;
+margin:0; 
+padding:0;
+}
+/* ignore the link used by 'other browsers' */
+.menu ul li a.hide, .menu ul li a:visited.hide {
+display:none;
+}
+/* set the background and foreground color of the main menu link on hover */
+.menu ul li a:hover {
+color:#fff; 
+background:#b3ab79;
+background-image: url(/images/middle3.jpg);
+}
+/* make the sub menu ul visible and position it beneath the main menu list item */
+.menu ul li a:hover ul {
+display:block; 
+position:absolute; 
+top:24px; 
+left:0; 
+width:125px;
+}
+/* style the background and foreground color of the submenu links */
+.menu ul li a:hover ul li a {
+background:#FFFFFF; 
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #000000; 
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #000000; 
+height:18px;
+line-height:18px;
+text-align:left;
+padding-left:4px;
+color:#000;
+}
+/* style the background and forground colors of the links on hover */
+.menu ul li a:hover ul li a:hover {
+/* background:#dfc184; */
+background:#CCCCCC;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #666666;  
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #666666;  
+color:#000;
+}
+.menu ul li.left a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/left.jpg);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #12171D;
+}
+.menu ul li.right a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/right.jpg);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #12171D;
+}
+.menu ul li.aa {
+background-image: url(/images/middle2.jpg);
+width:130px;
+}
+.menu ul li.aa a:hover ul.bb a{
+width:131px;
+text-align:left;
+padding-left:4px;
+/*text-align:left;*/
+}
+</style>
+<![endif]-->
+<style type="text/css"> 
+<!-- 
+.box1{ 
+    min-height:60px;
+    width: 200px;
+    height: 55px;
+    float: left;
+    padding-top:10px;
+}
+.box3{ min-height:60px;
+    height: 55px;
+    width: 360px;
+    float: left;
+}
+.box2{  
+    min-height:60px;
+    height: 55px;
+    width: 220px;
+    float: left;
+    padding-top:10px;
+        /*border: 1px solid red;*/
+} 
+.clear{
+ clear:both; 
+}
+--> 
+</style>
+<title>博日</title>
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12222813-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body id="layouts" onload="setTop();">
+<center>
+<div id="all">  
+  <div id="top">
+    <%= render :partial => '/layouts/top' %>
+  </div>
+
+ <div class="menu">
+          <ul>
+          <li class="left"><a></a></li>
+          <!--产品中心-->
+          <li class="aa"><a class="hide" href="/productcenter/productcenter?id=001">产品中心</a>
+          <!--[if lte IE 6]>
+          <a href="/productcenter/productcenter?id=001" title="" width="125">产品中心
+          <table width="125"><tr><td width="125">
+          <![endif]-->
+              <ul class="bb">
+              <% 
+              @count = 0
+              for menu1 in @menu1 
+              @count = @count + 1  
+              %>
+                <% if @menu1.size == @count %>
+                    <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; ">
+                      <a href="/productcenter/productcenter?id=<%=menu1.categoryid%>" title="" ><%=h menu1.categoryname%>
+                      </a>
+                    </li>
+                <% else %>
+                  <li><a href="/productcenter/productcenter?id=<%=menu1.categoryid%>" title=""><%=h menu1.categoryname%></a></li>
+                <% end  %>
+              <% end %>
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--市场应用-->
+          <li><a class="hide" href="/solveprecent/solveprecent?id=002" title="">市场应用</a>
+          <!--[if lte IE 6]>
+          <a  href="/solveprecent/solveprecent?id=002" title="">市场应用
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu2 in @menu2
+              @count = @count + 1                 
+              %>
+              <% if @menu2.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/solveprecent/solveprecent?id=<%=menu2.categoryid%>"><%=h menu2.categoryname %></a></li>
+              <% else %>
+                <li><a href="/solveprecent/solveprecent?id=<%=menu2.categoryid%>"><%=h menu2.categoryname %></a></li>
+              <% end %>
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--支持服务-->
+          <li><a class="hide" href="/servearea/servearea?id=<%=@minmenu3%>" title="">支持服务</a>
+          <!--[if lte IE 6]>
+          <a  href="/servearea/servearea?id=<%=@minmenu3%>" title="">支持服务
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu3 in @menu3 
+              @count = @count + 1  
+              %>
+              <% if @menu3.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/servearea/servearea?id=<%=menu3.categoryid%>"><%=h menu3.categoryname %></a></li>
+              <% else %>
+                <li><a href="/servearea/servearea?id=<%=menu3.categoryid%>"><%=h menu3.categoryname %></a></li>
+              <% end %>              
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--新闻中心-->
+          <li><a class="hide" href="/newscenter/newscenter?id=<%=@minmenu4%>">新闻中心</a>
+          <!--[if lte IE 6]>
+          <a  href="/newscenter/newscenter?id=<%=@minmenu4%>">新闻中心
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <%
+              @count = 0
+              for menu4 in @menu4 
+              @count = @count + 1 
+              %>
+              <% if @menu4.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/newscenter/newscenter?id=<%=menu4.categoryid%>"><%=h menu4.categoryname %></a></li>         
+               <% else %>
+                <li><a href="/newscenter/newscenter?id=<%=menu4.categoryid%>"><%=h menu4.categoryname %></a></li>         
+              <% end %>             
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--营销网络-->
+          <li><a class="hide" href="/businessnetwork/businessnetwork?id=<%=@minmenu5%>">营销网络</a>
+          <!--[if lte IE 6]>
+          <a  href="/businessnetwork/businessnetwork?id=<%=@minmenu5%>">营销网络
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <%
+              @count = 0 
+              for menu5 in @menu5 
+              @count = @count + 1 
+              %>
+              <% if @menu5.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/businessnetwork/businessnetwork?id=<%=menu5.categoryid%>"><%=h menu5.categoryname %></a></li>
+              <% else %>
+                <li><a href="/businessnetwork/businessnetwork?id=<%=menu5.categoryid%>"><%=h menu5.categoryname %></a></li>
+              <% end %>                
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--关于博日-->
+          <li><a class="hide" href="/aboutbioer/aboutbioer?id=<%=@minmenu6%>">关于博日</a>
+          <!--[if lte IE 6]>
+          <a  href="/aboutbioer/aboutbioer?id=<%=@minmenu6%>">关于博日
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu6 in @menu6 
+              @count = @count + 1 
+              %>
+              <% if @menu6.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/aboutbioer/aboutbioer?id=<%=menu6.categoryid%>"><%=h menu6.categoryname %></a></li>
+              <% else %>
+                <li><a href="/aboutbioer/aboutbioer?id=<%=menu6.categoryid%>"><%=h menu6.categoryname %></a></li>
+              <% end %>                
+              <% end %>    
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--交流园地-->
+          <li><a class="hide" href="/communion/communion?id=<%=@minmenu7%>">交流园地</a>
+          <!--[if lte IE 6]>
+          <a  href="/communion/communion?id=<%=@minmenu7%>">交流园地
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu7 in @menu7 
+              @count = @count + 1 
+              %>
+              <% if @menu7.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/communion/communion?id=<%=menu7.categoryid%>"><%=h menu7.categoryname %></a></li>
+              <% else %>
+                <li><a href="/communion/communion?id=<%=menu7.categoryid%>"><%=h menu7.categoryname %></a></li>
+              <% end %>                 
+              <% end %>
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <li class="right"><a></a></li>
+          </ul>
+          <!-- clear the floats if required -->
+          <div class="clear"> </div>
+    </div>
+  <div id="img"><img src="<%=@imgurl %>" width="780" height=60" /></div>
+  <div class="clear"></div>
+  <div id="middle">
+    <%= yield  %>
+  </div>
+ <div class="clear"> </div>
+ <!--底部-->
+
+  <div id="footer">
+    <%= render :partial => '/layouts/footer' %>
+  </div>
+</div>
+
+</center>
+
+
+<script language="JavaScript" type="text/JavaScript">
+
+var clickPID='menutop2',clickCID='';
+
+//取得网页元素
+function getElementsByName(tag,eltname)
+{ 
+  var elts=document.getElementsByTagName(tag); 
+  var count=0; 
+  var elements=[]; 
+  for(var i=0;i<elts.length;i++){ 
+     if(elts[i].getAttribute("name")==eltname){ 
+        elements[count++]=elts[i]; 
+     } 
+  } 
+  return elements; 
+}
+
+//初始化父菜单
+function init1()
+{
+    var cElements,pElements;
+    
+    pElements = getElementsByName("td","paremenu"); 
+    cElements = getElementsByName("tr","childmenu"); 
+    
+    //收起所有菜单
+    for (i=0;i<cElements.length ;i++ ) 
+    { 
+        cElements[i].style.display = "none"; 
+    }
+    
+    //全部恢复颜色
+    for (i=0;i<pElements.length ;i++ ) 
+    { 
+        pElements[i].style.color='#000000';
+        pElements[i].style.backgroundImage='url(/images/memu_r9_c1.jpg)';
+    }
+}
+//初始化子菜单
+function init2()
+{
+    var ciElements;
+    
+    ciElements = getElementsByName("td","childmenuitem"); 
+     
+    //全部恢复颜色
+    for (i=0;i<ciElements.length ;i++ ) 
+    { 
+        ciElements[i].style.color='#000000';
+        ciElements[i].style.backgroundImage='url(/images/memu_r3_c1.jpg)';
+    }
+}
+
+//改变颜色
+function change(strID,changesrc)
+{
+    document.getElementById(strID).style.backgroundImage='url('+changesrc + ')'; 
+    document.getElementById(strID).style.color='#FFFFFF';
+}
+
+//恢复颜色
+function recover(strID)
+{
+    if (strID.length > 3 && strID.length <= 6 || strID == 'menutop2')
+    {
+        if(clickPID == strID)
+        {
+            document.getElementById(strID).style.backgroundImage = 'url(/images/memu_r2_c1.jpg)'; 
+            document.getElementById(strID).style.color='#FFFFFF'; 
+        }
+        else
+        {
+            document.getElementById(strID).style.backgroundImage = 'url(/images/memu_r9_c1.jpg)'; 
+            document.getElementById(strID).style.color='#000000';
+        }
+    }
+    else if(strID.length > 6)
+    {
+        if(clickCID == strID)
+        {
+            document.getElementById(strID).style.backgroundImage = 'url(/images/memu_r5_c1.jpg)';
+            document.getElementById(strID).style.color='#FFFFFF';            
+        }
+        else
+        {
+            document.getElementById(strID).style.backgroundImage = 'url(/images/memu_r3_c1.jpg)'; 
+            document.getElementById(strID).style.color='#000000';
+        }
+    }
+}
+
+//主菜单单击事件
+function show1(childID,pareID,url)
+{    
+    init1();
+    init2();
+    
+    //主菜单变色
+    document.getElementById("menutop2").style.color='#000000';
+    document.getElementById("menutop2").style.backgroundImage='url(/images/memu_r9_c1.jpg)';
+    
+    //展开菜单并更换颜色
+    clickPID = pareID;
+    clickCID = '';
+    document.getElementById(pareID).style.color='#FFFFFF';
+    document.getElementById(pareID).style.backgroundImage='url(/images/memu_r2_c1.jpg)';
+    document.getElementById("frame1").src = url;
+    if ( childID.length > 3)
+    {
+        document.getElementById(childID).style.display = "";
+    }   
+}
+
+//子菜单单击事件
+function show2(selfID,url)
+{
+    init2();
+    
+    //点中菜单变色，并转到链接
+    clickCID = selfID;
+    document.getElementById(selfID).style.color='#FFFFFF';
+    document.getElementById(selfID).style.backgroundImage='url(/images/memu_r5_c1.jpg)';
+    document.getElementById("frame1").src = url;
+    
+}
+
+//定位菜单项
+function gotomenu(menuid,url)
+{    
+    //主菜单变色
+    document.getElementById("menutop2").style.color='#000000';
+    document.getElementById("menutop2").style.backgroundImage='url(/images/memu_r9_c1.jpg)';
+    
+    if (menuid.length > 3 && menuid.length <= 6)
+    {
+        //展开菜单并更换颜色
+        document.getElementById("frame1").src = url;
+        document.getElementById(menuid).style.color='#FFFFFF';
+        document.getElementById(menuid).style.backgroundImage='url(/images/memu_r2_c1.jpg)';
+        document.getElementById("child"+menuid).style.display = "";
+        clickPID = menuid;
+        clickCID = '';
+    }
+    else if(menuid.length > 6)
+    {
+        document.getElementById(menuid.substring(0,6)).style.color='#FFFFFF';
+        document.getElementById(menuid.substring(0,6)).style.backgroundImage='url(/images/memu_r2_c1.jpg)';
+        document.getElementById("child"+menuid.substring(0,6)).style.display = "";
+        document.getElementById(menuid).style.color='#FFFFFF';
+        document.getElementById(menuid).style.backgroundImage='url(/images/memu_r5_c1.jpg)';
+        clickPID = menuid.substring(0,6);
+        clickCID = menuid; 
+    }
+    else
+    {
+        document.getElementById("menutop2").style.color='#FFFFFF';
+        document.getElementById("menutop2").style.backgroundImage='url(/images/memu_r2_c1.jpg)';
+    }   
+    
+} 
+gotomenu("<%= @menuid%>","<%= @menu %>")
+</script>
+<script language="JavaScript" type="text/JavaScript">
+function setTop()
+{
+    document.getElementById("all").style.height = frame1.document.body.scrollHeight;
+    if(frame1.document.body.scrollHeight > 600)
+    {
+        document.getElementById("footer").style.top = 50;
+    }
+    else
+    {
+        document.getElementById("footer").style.top = 300;
+    }
+}
+</script>
+</body>
+</html>

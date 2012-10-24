@@ -1,0 +1,2 @@
+module BackManager::EnContactHelper
+end

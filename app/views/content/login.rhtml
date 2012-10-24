@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>机器码验证</title>
+<%= stylesheet_link_tag 'content' %>
+
+<style  type="text/css">  
+.test{
+font-size:12px;
+color:#666666;
+height:12px;
+
+padding-top:6px;
+line-height:20px !important;
+line-height:8px
+}
+</style> 
+</head>
+<body>
+<% if flash[:notice] -%>
+  <div id="notice"><%= flash[:notice] %></div>
+<% end -%>
+<div id="verify">
+<% form_tag :action => 'verify',:id => @menu do %>
+    <table width="381" height="109" border="0" align="center" cellspacing="0"  cellpadding="0" background="/images/downloadimg2.jpg">
+      <tr>
+        <td width="350" height="49" align="center" valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;输入产品编码前七位:&nbsp;&nbsp;
+<%= text_field 'machinecode', 'machinecode' ,:size=> 25,:value=>'产品编码见机器标签',:onFocus=>"this.value=''",:class=>'test' %>
+        </td>      
+      </tr>
+      <tr><td height="60" valign="center" align="center"><%= submit_tag "提交" %>&nbsp;&nbsp;<%= submit_tag "重置" %></td></tr>
+  </table>
+<% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<%= stylesheet_link_tag 'basic' %>
+<style type="text/css">
+/* common styling */
+/* set up the overall width of the menu div, the font and the margins */
+.menu {
+	font-family: arial, sans-serif;
+	width:782px;
+	margin:0;
+        padding:0; 
+	/*margin:1px;*/
+}
+/* remove the bullets and set the margin and padding to zero for the unordered list */
+.menu ul {
+padding:0; 
+margin:0;
+list-style-type: none;
+}
+/* float the list so that the items are in a line and their position relative so that the drop down list will appear in the right place underneath each list item */
+.menu ul li {
+float:left; 
+position:relative;
+}
+/* style the links to be 104px wide by 30px high with a top and right border 1px solid white. Set the background color and the font size. */
+.menu ul li a, .menu ul li a:visited {
+display:block; 
+text-align:center; 
+text-decoration:none; 
+width:103px; 
+height:24px; 
+color:#FFFFFF; 
+border:0px solid #fff;
+border-width:0px 0px 0 0;
+background-image: url(/images/middle1.jpg);
+line-height:24px; 
+font-size:12px;
+}
+/* make the dropdown ul invisible */
+.menu ul li ul {
+display: none;
+}
+/* specific to non IE browsers */
+/* set the background and foreground color of the main menu li on hover */
+.menu ul li:hover a {
+color:#fff; 
+background:#b3ab79;
+background-image: url(/images/middle3.jpg);
+}
+/* make the sub menu ul visible and position it beneath the main menu list item */
+.menu ul li:hover ul {
+display:block; 
+position:absolute; 
+top:24px; 
+left:0; 
+width:125px;
+}
+/* style the background and foreground color of the submenu links */
+.menu ul li:hover ul li a {
+display:block; 
+/*background:#faeec7; */
+background:#FFFFFF; 
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #000000; 
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #000000; 
+height:18px;
+line-height:18px;
+text-align:left;
+padding-left:4px;
+color:#000;
+}
+/* style the background and forground colors of the links on hover */
+.menu ul li:hover ul li a:hover {
+/* background:#dfc184; */
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #666666;  
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #666666;  
+background:#CCCCCC;
+color:#000;
+}
+.menu ul li.left a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/sleft.jpg);
+}
+.menu ul li.right a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/sright.jpg);
+}
+.menu ul li.aa a{
+background-image: url(/images/middle2.jpg);
+width:130px;
+}
+
+.menu ul li.aa a:hover {
+background-image: url(/images/middle3.jpg);  
+color:#000;
+}
+.menu ul li.aa a:hover ul.bb a{
+width:131px;
+text-align:left;
+padding-left:4px;
+/*text-align:left;*/
+}
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+/* styling specific to Internet Explorer IE5.5 and IE6. Yet to see if IE7 handles li:hover */
+/* Get rid of any default table style */
+table {
+border-collapse:collapse;
+margin:0; 
+padding:0;
+}
+/* ignore the link used by 'other browsers' */
+.menu ul li a.hide, .menu ul li a:visited.hide {
+display:none;
+}
+/* set the background and foreground color of the main menu link on hover */
+.menu ul li a:hover {
+color:#fff; 
+background:#b3ab79;
+background-image: url(/images/middle3.jpg);
+}
+/* make the sub menu ul visible and position it beneath the main menu list item */
+.menu ul li a:hover ul {
+display:block; 
+position:absolute; 
+top:24px; 
+left:0; 
+width:125px;
+}
+/* style the background and foreground color of the submenu links */
+.menu ul li a:hover ul li a {
+/*background:#faeec7; */
+background:#FFFFFF;
+
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #000000; 
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #000000; 
+height:18px;
+line-height:18px;
+text-align:left;
+padding-left:4px;
+color:#000;
+}
+/* style the background and forground colors of the links on hover */
+.menu ul li a:hover ul li a:hover {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #666666;  
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #666666;  
+background:#CCCCCC;
+color:#000;
+}
+
+.menu ul li.left a{
+	width:16px;
+        height:24px;
+	background-image: url(/images/sleft.jpg);
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #1F3469;
+}
+.menu ul li.right a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/sright.jpg);
+	border-top-width: 1px;
+	border-top-style: solid;
+border-top-color: #1F3469;
+}
+.menu ul li.aa {
+background-image: url(/images/middle2.jpg);
+width:130px;
+height:24px;
+}
+.menu ul li.aa a:hover {
+background-image: url(/images/middle3.jpg); 
+width:130px;
+color:#000;
+}
+.menu ul li.aa a:hover ul.bb a{
+width:131px;
+text-align:left;
+padding-left:4px;
+/*text-align:left;*/
+}
+</style>
+<![endif]-->
+<style type="text/css"> 
+<!-- 
+
+.box1{ 
+    min-height:60px;
+    width: 203px;
+    height: 60px;
+    float: left;
+    padding-top:10px;
+}
+.box3{ min-height:60px;
+    height: 60px;
+    width: 300px;
+    float: left;
+}
+.box2{  
+    min-height:60px;
+    height: 60px;
+    width: 270px;
+    float: left;
+    padding-top:10px;
+        /*border: 1px solid red;*/
+} 
+.clear{
+ clear:both; 
+}
+
+--> 
+</style>
+
+<script language="JavaScript" type="text/JavaScript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+</script>
+<title>博日</title>
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12222813-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body id="body">
+
+<!-- this is float picture -->
+<script language="JavaScript" type="text/JavaScript">
+lastScrollY=0;
+function heartBeat(){
+var diffY;
+if (document.documentElement && document.documentElement.scrollTop)
+    diffY = document.documentElement.scrollTop;
+else if (document.body)
+    diffY = document.body.scrollTop
+else
+    {/*Netscape stuff*/}
+   
+//alert(diffY);
+percent=.1*(diffY-lastScrollY);
+if(percent>0)percent=Math.ceil(percent);
+else percent=Math.floor(percent);
+document.getElementById("lovexin12").style.top=parseInt(document.getElementById("lovexin12").style.top)+percent+"px";
+document.getElementById("lovexin13").style.top=parseInt(document.getElementById("lovexin13").style.top)+percent+"px";
+document.getElementById("lovexin14").style.top=parseInt(document.getElementById("lovexin12").style.top)+percent+"px";
+document.getElementById("lovexin15").style.top=parseInt(document.getElementById("lovexin13").style.top)+percent+"px";
+lastScrollY=lastScrollY+percent;
+//alert(lastScrollY);
+}
+suspendcode12="<div id=\"lovexin12\" style='left:2px;position:absolute;top:100px;z-index:10;'> <a target=\"_blank\" href=\"http://wpa.qq.com/msgrd?v=3&uin=2692451991&site=qq&menu=yes\"><img border=\"0\" src=\"http://wpa.qq.com/pa?p=2:2692451991:41 &r=0.6332547182682902\" alt=\"试剂产品咨询\" title=\"试剂产品咨询\"></a><br />  <a target=\"_blank\" href=\"http://wpa.qq.com/msgrd?v=3&uin=1943387805&site=qq&menu=yes\"><img border=\"0\" src=\"http://wpa.qq.com/pa?p=2:1943387805:41 &r=0.6332547182682902\" alt=\"试剂产品咨询\" title=\"试剂产品咨询\"></a><br />    <a href='http://www.bioer.com.cn/productcenter/productcenter?id=001008' target='_blank'><img src='/images/left3.jpg' height='365' width='150' border='0'></a></div>"
+suspendcode13="<div id=\"lovexin13\" style='left:2px;position:absolute;top:465px;z-index:10;'><a href='http://www.diaochapai.com/survey591312' target='_blank'><img src='/images/bioer_dy.jpg' height='85' width='150' border='0'></a></div>"
+suspendcode14="<div id=\"lovexin14\" style='right:2px;position:absolute;top:100px;z-index:10;'> <a target=\"_blank\" href=\"http://wpa.qq.com/msgrd?v=3&uin=2692451991&site=qq&menu=yes\"><img border=\"0\" src=\"http://wpa.qq.com/pa?p=2:2692451991:41 &r=0.6332547182682902\" alt=\"试剂产品咨询\" title=\"试剂产品咨询\"></a><br />  <a target=\"_blank\" href=\"http://wpa.qq.com/msgrd?v=3&uin=1943387805&site=qq&menu=yes\"><img border=\"0\" src=\"http://wpa.qq.com/pa?p=2:1943387805:41 &r=0.6332547182682902\" alt=\"试剂产品咨询\" title=\"试剂产品咨询\"></a><br /><a hef='http://www.bioer.com.cn/productcenter/productcenter?id=001002' target='_blank'><img src='/images/touch.jpg' height='365' width='150' border='0'></a></div>"
+suspendcode15="<div id=\"lovexin15\" style='right:2px;position:absolute;top:465px;z-index:10;'><a href='http://www.diaochapai.com/survey591312' target='_blank'><img src='/images/bioer_dy.jpg' height='85' width='150' border='0'></a></div>"
+document.write(suspendcode12);
+document.write(suspendcode13);
+document.write(suspendcode14);
+document.write(suspendcode15);
+window.setInterval("heartBeat()",1);
+</script>
+<!-- float picture is end-->
+<center>
+<div id="all">
+        <div id="top">
+	<div class="box1"><img src="/images/index1.jpg" alt="ferrotec" width="188" height="47" border="0" /></div>
+        <div class="box3"></div>
+        <div class="box2">
+          <form method="get" action="http://www.google.com/custom" target="_blank">
+          <table border="0" cellpadding="0" cellspacing="0" align="right">
+            <tr>
+              <td width="50px" height="20px" align="left"><a href="/bioer/bioerfirstpage">返回首页</a></td>
+              <td width="20" align="center">|</td>
+              <td width="50px" align="center"><a href="/aboutbioer/aboutbioer?id=006005">联系我们</a></td>
+              <td width="20" align="center">|</td>
+              <td width="50px" align="center"><a href='/send/product_register' target='_blank'>产品注册</a></td>
+              <td width="20" align="center">|</td>
+              <td width="60px" align="left"><a href="/bioer/bioer_en">English</a></td>
+            </tr>
+            <tr>
+              <td colspan="4" height="30px">
+                <input type="text" name="q" size="15" maxlength="255" value="" />
+                <input type="hidden" name="hl" value="zh-cn" />
+                <input type="hidden" name="ie" value="utf-8" />
+                <input type="hidden" name="oe" value="utf-8" />
+              </td>
+              <td align="left">
+                <input type="submit" name="sa" value="" class="bottom" />
+              </td>
+              <td>
+                <input type="hidden" name="domains" value="www.bioer.com.cn" />
+                <input type="hidden" name="sitesearch" value="www.bioer.com.cn" />
+              </td>
+            </tr>
+          </table>
+          </form>
+        </div>
+	</div>   
+        <div class="clear"></div>
+	<div id="flash">
+          <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="780" height="250">
+          <param name="movie" value="<%=@flashurl%>" />
+          <param name="quality" value="high" />        
+          <param name="wmode" value="transparent" />
+          <embed src="<%=@flashurl%>" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="780" height="250"></embed>
+          </object>
+	</div>
+        <div class="clear"></div>
+	<div class="menu">
+          <ul>
+          
+
+          <li class="left"><a></a></li>
+   
+          <!--产品中心-->
+          <li class="aa"><a class="hide" href="/productcenter/productcenter?id=001">产品中心</a>
+          <!--[if lte IE 6]>
+          <a href="/productcenter/productcenter?id=001" title="" width="125">产品中心
+          <table width="125"><tr><td width="125">
+          <![endif]-->
+              <ul class="bb">
+              <% 
+              @count = 0
+              for menu1 in @menu1 
+              @count = @count + 1  
+              %>
+                <% if @menu1.size == @count %>
+                    <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; ">
+                      <a href="/productcenter/productcenter?id=<%=menu1.categoryid%>" title="" ><%=h menu1.categoryname%>
+                      </a>
+                    </li>
+                <% else %>
+                  <li><a href="/productcenter/productcenter?id=<%=menu1.categoryid%>" title=""><%=h menu1.categoryname%></a></li>
+                <% end  %>
+              <% end %>
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--市场应用-->
+          <li><a class="hide" href="/solveprecent/solveprecent?id=002" title="">市场应用</a>
+          <!--[if lte IE 6]>
+          <a  href="/solveprecent/solveprecent?id=002" title="">市场应用
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu2 in @menu2
+              @count = @count + 1                 
+              %>
+              <% if @menu2.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/solveprecent/solveprecent?id=<%=menu2.categoryid%>"><%=h menu2.categoryname %></a></li>
+              <% else %>
+                <li><a href="/solveprecent/solveprecent?id=<%=menu2.categoryid%>"><%=h menu2.categoryname %></a></li>
+              <% end %>
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--支持服务-->
+          <li><a class="hide" href="/servearea/servearea?id=<%=@minmenu3%>" title="">支持服务</a>
+          <!--[if lte IE 6]>
+          <a  href="/servearea/servearea?id=<%=@minmenu3%>" title="">支持服务
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu3 in @menu3 
+              @count = @count + 1  
+              %>
+              <% if @menu3.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/servearea/servearea?id=<%=menu3.categoryid%>"><%=h menu3.categoryname %></a></li>
+              <% else %>
+                <li><a href="/servearea/servearea?id=<%=menu3.categoryid%>"><%=h menu3.categoryname %></a></li>
+              <% end %>              
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--新闻中心-->
+          <li><a class="hide" href="/newscenter/newscenter?id=<%=@minmenu4%>">新闻中心</a>
+          <!--[if lte IE 6]>
+          <a  href="/newscenter/newscenter?id=<%=@minmenu4%>">新闻中心
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <%
+              @count = 0
+              for menu4 in @menu4 
+              @count = @count + 1 
+              %>
+              <% if @menu4.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/newscenter/newscenter?id=<%=menu4.categoryid%>"><%=h menu4.categoryname %></a></li>         
+               <% else %>
+                <li><a href="/newscenter/newscenter?id=<%=menu4.categoryid%>"><%=h menu4.categoryname %></a></li>         
+              <% end %>             
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--营销网络-->
+          <li><a class="hide" href="/businessnetwork/businessnetwork?id=<%=@minmenu5%>">营销网络</a>
+          <!--[if lte IE 6]>
+          <a  href="/businessnetwork/businessnetwork?id=<%=@minmenu5%>">营销网络
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <%
+              @count = 0 
+              for menu5 in @menu5 
+              @count = @count + 1 
+              %>
+              <% if @menu5.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/businessnetwork/businessnetwork?id=<%=menu5.categoryid%>"><%=h menu5.categoryname %></a></li>
+              <% else %>
+                <li><a href="/businessnetwork/businessnetwork?id=<%=menu5.categoryid%>"><%=h menu5.categoryname %></a></li>
+              <% end %>                
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--关于博日-->
+          <li><a class="hide" href="/aboutbioer/aboutbioer?id=<%=@minmenu6%>">关于博日</a>
+          <!--[if lte IE 6]>
+          <a  href="/aboutbioer/aboutbioer?id=<%=@minmenu6%>">关于博日
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu6 in @menu6 
+              @count = @count + 1 
+              %>
+              <% if @menu6.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/aboutbioer/aboutbioer?id=<%=menu6.categoryid%>"><%=h menu6.categoryname %></a></li>
+              <% else %>
+                <li><a href="/aboutbioer/aboutbioer?id=<%=menu6.categoryid%>"><%=h menu6.categoryname %></a></li>
+              <% end %>                
+              <% end %>    
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--交流园地-->
+          <li><a class="hide" href="/communion/communion?id=<%=@minmenu7%>">交流园地</a>
+          <!--[if lte IE 6]>
+          <a  href="/communion/communion?id=<%=@minmenu7%>">交流园地
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menu7 in @menu7 
+              @count = @count + 1 
+              %>
+              <% if @menu7.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/communion/communion?id=<%=menu7.categoryid%>"><%=h menu7.categoryname %></a></li>
+              <% else %>
+                <li><a href="/communion/communion?id=<%=menu7.categoryid%>"><%=h menu7.categoryname %></a></li>
+              <% end %>                 
+              <% end %>
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+
+          <li class="right"><a>&nbsp;</a></li>
+
+          </ul>
+          <!-- clear the floats if required -->
+          <div class="clear"> </div>
+    </div>
+ <div class="clear"></div>
+
+<div id="firstmiddle">
+	<div id="company">
+	<span id="blueHead">关于博日</span><br />
+        <p id="aboutbioer">杭州博日科技有限公司(BIOER)是一家专业从事生命科学仪器<br />和试剂研发、生产、销售及服务的企业。公司位于杭州高新技术<br />产业开发区（滨江区），占地26000M2，建筑面积 15000M2，拥<br />有一万级的超级净空房、GMP试剂车间、中心实验室等一流的环<br />境和设备。拥有员工百余人。</p>
+        <p id="aboutbioer">本着“勤勉立志、开拓创优”的经营理念，博日公司励精图治，建立了完善的质量管理体系，先后获得了德国TUV的ISO9001<br />和ISO13485的认证。我们将继续努力，既往开来，在生命科学领域，<img src="/images/aboutus_07.jpg" alt="bioer company" align="left" height="96" width="250" style="float:right;padding-top:8px;" />为人类的健康事业作出更大的贡献以实际行动来实现博日的<br />品牌理念：用科<br />技关爱生命！<br /><br />
+        <a href="/aboutbioer/aboutbioer?id=<%=@minmenu6%>">More&nbsp;&raquo;</a>
+	</p> 
+	</div>
+
+	<div id="productinfo">
+		<span id="blueHead">博日产品</span><br />
+		<p id="warning">
+                <% for menu1 in @menu1 %>
+                  <a href="/productcenter/productcenter?id=<%=menu1.categoryid%>">
+                  <span id="abc">&raquo;</span>&nbsp;<%=h(menu1.categoryname) %>&nbsp;</a><br />
+                <% end %>
+		</p>
+                <br/>
+		<p>
+                <% if @topurl.size > 0 %>
+                  <% for url in @topurl %>
+                  <a  href="/productcenter/productcenter?id=<%=url.categoryid%>">
+                  <img src="/images/00.gif" alt="product" border="0" height="65" width="166" style="cursor:hand" />
+                  </a>
+                  <% end %>
+                <% else %>
+                  <img src="/images/touch.gif" alt="product" border="0" height="64" width="163" />
+                <% end %>
+                </p>
+	</div>
+	<div id="news">
+		<p id ="topimg">
+		<span id="blueHead">&nbsp;&nbsp;&nbsp;&nbsp;新闻中心</span>
+		<span id="news1"><a href="/newscenter/newscenter?id=<%=@minmenu4%>">More&nbsp;&raquo;&nbsp;&nbsp;</a></span>
+		</p>
+                <% for news in @news %>
+                <div id="middleimg">
+		<a href="#" style="cursor:hand" onClick='window.open("/content/newsdetail?id=<%=news.id%>","","scrollbars=yes,width=600,height=360,top=200,resizable=yes")'><%=h news.title %></a>
+                </div>
+                <% end %>   
+                 <div class="clear"></div>
+                <div><p id="bottomimg">&nbsp;</p></div>
+                <div id="yqlj">
+                  <br/>
+                  <p>&nbsp;&nbsp;友情链接:</p>
+                  <p>&nbsp;
+                    <select name="select" onChange="MM_jumpMenu('parent',this,0)" width="80px">
+                          <option value="/bioer/bioerfirstpage">博日科技及关联公司</option>
+                          <option value="http://www.ferrotec.com.cn">├杭州大和热磁</option>
+                          <option value="http://www.youhaoyijian.com">├杭州友好医学检验中心</option>
+                          <option value="http://www.acmhz.com">├杭州先进陶瓷材料</option>  
+                          <option value="http://www.wagenchina.com.cn">├杭州和源精密工具</option>
+                          <option value="http://www.ferrotec.sh.cn">├上海申和热磁电子</option>
+                          <option value="http://www.hanhong.sh.cn/">├上海汉虹精密机械</option>
+                          <option value="http://www.hanhong.sh.cn/">├上海汉虹国际贸易</option>
+                     </select>
+                  </p>
+                  <p>
+                    <!-- target="_parent" -->         
+                    <a href="http://www.ferrotec.com.cn/" target="_blank">
+                      <img src="/images/yqlj1.jpg" alt="ferrotec" border="0" height="18" width="73" />
+                    </a>
+                    <a href="http://wagenchina.com.cn/" target="_blank">
+                      <img src="/images/yqlj2.jpg" alt="youhao" border="0" height="18" width="73" />
+                    </a>
+                    <a href="http://www.youhaoyijian.com/" target="_blank">
+                      <img src="/images/yqlj3.jpg" alt="youbing" border="0" height="18" width="47" />
+                    </a>
+                    </p>
+                </div>
+	</div>
+
+</div>
+</div>
+
+<div id="aboutfooter">
+<p><img src="/images/bottomlline.jpg" width="780" height="5" /></p>
+<p>Copyright @ 2009 - 2015 Bioer.All Rights Reserved</p>
+<p><a href="http://www.miibeian.gov.cn/">浙ICP备05056307号</a> </p>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F388a0dc0540dd9b6bfcfe5b83241e3c9' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<a href="http://122.224.75.236/wzba/login.do?method=hdurl&doamin=http://www.bioer.com.cn&id=330100400021646&SHID=1223.0AFF_NAME=com.rouger.
+gs.main.UserInfoAff&AFF_ACTION=qyhzdetail&PAGE_URL=ShowDetail"
+target="_blank"> <img src="http://122.224.75.236/wzba/view/baxx/gh.jpg" border="0"></a>
+</p>
+</div>
+</center>
+</body>
+
+</html>
+

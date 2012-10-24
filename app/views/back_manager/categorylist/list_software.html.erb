@@ -1,0 +1,50 @@
+
+<div id="categorylist">
+<br/>
+<h3>软件下载一览</h3>
+<br/>
+<table id="table" cellpadding="0" cellspacing="0">
+  <tr id="tabletr">
+    <td width="220">仪器名称</td>
+    <td width="160">软件名称</td>
+    <td width="60">版本</td>
+    <td width="120">安装对象</td>
+    <td width="100">发布时间</td>
+    <!--<td>图片</td>-->
+    <td colspan="2" width="120" align="center"><%= link_to '添加新标题', :action => 'add_software' %></td>
+  </tr>
+  <% for categorylist in @all_categorylists %>
+  <tr>
+    <td><%=h(truncate(categorylist.title,40))%>&nbsp;</td>
+    <td><%=h(truncate(categorylist.titlestyle,40))%>&nbsp;</td>
+    <td><%=h(truncate(categorylist.titleurl,40))%>&nbsp;</td>
+    <td><%=h(truncate(categorylist.summary,40))%>&nbsp;</td>
+    <td ><%= categorylist.createdate.strftime("%Y-%m-%d") %></td>
+    <td align="center"><%= link_to "修改",{ # link_to options
+                           :controller => 'categorylist',
+                           :action => 'edit_software',
+                           :id => categorylist} %>
+    </td>
+    <td align="center"><%= link_to "删除", { # link_to options
+                           :controller => 'categorylist',
+                           :action => 'delete_software',
+                           :id => categorylist},
+                         { # html options
+                           :method  => :post,
+                           :confirm => "确定要删除 #{categorylist.title}?"
+                         } %>
+
+     </td>
+  </tr>
+  <% end %>
+</table>
+</div>
+
+<div id="fy">
+<%= will_paginate @all_categorylists,
+:inner_window => 1,
+:outer_window => 1,
+:prev_label => '上一页',
+:next_label => '下一页'
+%>
+</div>

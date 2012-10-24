@@ -1,0 +1,935 @@
+<title>客户满意度调查问卷</title>
+<%= stylesheet_link_tag 'info' %>
+<%= javascript_include_tag 'jquery'%> 
+<%= javascript_include_tag 'jquery.validate'%>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+ $('#deliver').validate({
+ rules: {
+ a06: {
+ required: true,
+ email: true
+ }
+ }, //end rules
+ messages: {
+ a06: {
+ required: "请输入Email地址.",
+ email: "请输入一个有效的Email地址."
+ }
+ },
+ errorPlacement: function(error, element) {
+ if ( element.is(":radio") || element.is(":checkbox")) {
+ error.appendTo( element.parent());
+ } else {
+ error.insertAfter(element);
+ }
+ }
+
+ });
+}); // end ready()
+</script>
+
+<table width="720" cellspacing="0" cellpadding="0" border="0" align="center" class="bodyText02">
+  <tbody><tr>
+      <td colspan="3"> </td>
+    </tr>
+    <tr>
+      <td colspan="3"><table width="230" cellspacing="0" cellpadding="0" border="0" class="bodyText02">
+          <tbody><tr>
+              <td><img height="48" width="188" src="/images/lrlogo-c.jpg"  alt="bioer"/></td>
+            </tr>
+          </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td width="10%"> </td>
+      <td width="75%"><img height="51" width="401" src="/images/t-web-survey.jpg" alt="" /></td>
+      <td width="15%"> </td>
+    </tr>
+    <tr>
+      <td><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+      <td bgcolor="#ff6100"><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+      <td><img height="3" width="1" src="/images/spacer.gif" alt="" /></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><br/>
+        <% form_for :mailcontent, :url => { :action => 'dosend'},:html=>{:id=>'deliver',:method => :post} do |m| %>
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr valign="top">
+                <td class="bodyText02">
+                  <p><b><font color="#f5801f">
+                        请您完整填写下列联络信息，以便我们为您寄出奖品，我们承诺对您的个人信息完全保密。
+                      </font></b></p><br />
+                      <% if flash[:error] %>
+                          <div>
+                            <p><strong><%=flash[:error] %></strong></p>
+                          </div>　
+                      <% end -%>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">個人資料</font></b></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">1.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">姓名：*</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%=  m.text_field :a01,:size=>"50",:maxlength=>"500",:id=>"a01",:class => "required",:title => "姓名不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">2.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">单位：*</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> 
+                  <%= m.text_field :a02,:size=>"50",:maxlength=>"500",:id=>"a02",:class => "required",:title => "单位不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">3.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">实验室：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :a03,:size=>"50",:maxlength=>"500" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">4.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">研究方向：</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :a04,:size=>"50",:maxlength=>"500" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">5.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">电话：*</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :a05,:size=>"50",:maxlength=>"500",:id=>"a05",:class => "required",:title => "电话不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">6.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">Email：*</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :a06,:size=>"50",:maxlength=>"500",:id => "a06",:name=>"a06" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">7.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">邮寄地址：*</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> 
+                  <%= m.text_field :a07,:size=>"50",:maxlength=>"500",:id=>"a07",:class => "required",:title => "地址不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">8.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">邮编：*</font></b></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_field :a08,:size=>"50",:maxlength=>"500",:id=>"a08",:class => "required",:title => "邮编不能为空" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02"> </td>
+              </tr>
+              <tr>
+                <td class="bodyText02"><b><font color="#f5801f">9.</font></b></td>
+                <td class="bodyText02"><b><font color="#f5801f">您的个性化需求、意见和建议：</font></b><br />
+                      <% if flash[:error] %>
+                          <div>
+                            <p><strong><%=flash[:error] %></strong></p>
+                          </div>　
+                      <% end -%></td>
+              </tr>
+              <tr>
+                <td class="bodyText02"> </td>
+                <td class="bodyText02">
+                  <%= m.text_area :a09,:cols=>"55",:rows=>"5"  %>
+                </td>
+              </tr>
+
+              <tr>
+                <td width="2%" class="bodyText02"> </td>
+                <td width="98%" class="bodyText02"> </td>
+              </tr>
+            </tbody></table>
+
+
+
+
+          <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody><tr valign="center">
+                <td class="bodyText02"><p><b><font color="#f5801f" size =4>客户满意度调查。</font></b></p>
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+ 
+                       <!--题目1-->
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">1. </font></b></td>
+                        <td class="bodyText02"><b><font color="#f5801f">您实验室是否有在使用博日公司的仪器及代理产品?</font></b></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <%=m.radio_button :a1,1,:class=>"required",:title=>"请选择一个"%>
+                          是<br/>
+                          <%=m.radio_button :a1,2%>
+                          否<br/>
+                          如果您选择“是”，请注明产品型号
+                          <%= m.text_field :a1a,:size=>"50",:maxlength=>"500" %>
+                      </tr>
+                      <!--题目2-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" class="bodyText02"><b><font color="#f5801f">2.
+                            </font></b></td>
+                        <td class="bodyText02"><b><font color="#f5801f">您对博日公司的产品的性能、功能是否感到满意？</font></b></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <%=m.radio_button :a2,1,:class=>"required",:title=>"请选择一个"%>
+                          非常满意<br/>
+                          <%=m.radio_button :a2,2%>
+                          满意<br/>
+                          <%=m.radio_button :a2,3%>
+                          一般<br/>
+                          <%=m.radio_button :a2,4%>
+                          不满意<br/>
+                          <%=m.radio_button :a2,5%>
+                          很不满意
+                        </td>
+                      </tr>
+                      <!--题目3-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" class="bodyText02"><b><font color="#f5801f">3.</font></b></td>
+                        <td class="bodyText02"><b><font color="#f5801f">您对博日公司的产品的外观是否感到满意?</font></b></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <%=m.radio_button :a3,1,:class=>"required",:title=>"请选择一个"%>
+                          非常满意<br/>
+                          <%=m.radio_button :a3,2%>
+                          满意<br/>
+                          <%=m.radio_button :a3,3%>
+                          一般<br/>
+                          <%=m.radio_button :a3,4%>
+                          不满意<br/>
+                          <%=m.radio_button :a3,5%>
+                          很不满意
+                        </td>
+                      </tr>
+
+                      <!--题目4-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" class="bodyText02"><b><font color="#f5801f">4.</font></b></td>
+                        <td class="bodyText02"> <b><font color="#f5801f">您对博日公司的产品的价格是否感到满意?</font></b></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <%=m.radio_button :a4,1,:class=>"required",:title=>"请选择一个"%>
+                          非常满意<br/>
+                          <%=m.radio_button :a4,2%>
+                          满意<br/>
+                          <%=m.radio_button :a4,3%>
+                          一般<br/>
+                          <%=m.radio_button :a4,4%>
+                          不满意<br/>
+                          <%=m.radio_button :a4,5%>
+                          很不满意
+                        </td>
+                      </tr>
+                      <!--题目5-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p> </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" class="bodyText02"><b><font color="#f5801f">5.</font></b></td>
+                        <td valign="top" class="bodyText02"> <p> <b><font color="#f5801f">您购买博日公司的产品后的交货期为多久?</font></b><br/>
+                            <%=m.radio_button :a5,1,:class=>"required",:title=>"请选择一个"%>
+                            提前一周以上 <br/>
+                            <%=m.radio_button :a5,2%>
+                            按时 <br/>
+                            <%=m.radio_button :a5,3%>
+                            推迟1周 <br/>
+                            <%=m.radio_button :a5,4%>
+                            推迟2周 <br/>
+                            <%=m.radio_button :a5,5%>
+                            推迟2周以上
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目6-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">6.</font></b></td>
+                        <td class="bodyText02"><b><font color="#f5801f">您是否对博日公司的产品进行过投诉?</font></b></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <%=m.radio_button :a6,1,:class=>"required",:title=>"请选择一个"%>
+                          没有 <br/>
+                          <%=m.radio_button :a6,2%>
+                          有过1次 <br/>
+                          <%=m.radio_button :a6,3%>
+                          有过2次 <br/>
+                          <%=m.radio_button :a6,4%>
+                          有过3次 <br/>
+                          <%=m.radio_button :a6,5%>
+                          3次以上
+                        </td>
+                      </tr>
+                      <!--题目7-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">7.</font></b></td>
+                        <td class="bodyText02"><b><font color="#f5801f">您对博日售后部门的质量问题处理时间是否感到满意?</font></b></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td valign="top" class="bodyText02">
+                          <p>
+                            <%=m.radio_button :a7,1,:class=>"required",:title=>"请选择一个"%>
+                            非常满意 <br/>
+                            <%=m.radio_button :a7,2%>
+                            满意 <br/>
+                            <%=m.radio_button :a7,3%>
+                            一般 <br/>
+                            <%=m.radio_button :a7,4%>
+                            不满意 <br/>
+                            <%=m.radio_button :a7,5%>
+                            很不满意 </p>
+                        </td>
+                      </tr>
+                      <!--题目8-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">8.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您对博日售后部门的投诉解决是否感到满意?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%=m.radio_button :a8,1,:class=>"required",:title=>"请选择一个"%>
+                            非常满意 <br/>
+                            <%=m.radio_button :a8,2%>
+                            满意 <br/>
+                            <%=m.radio_button :a8,3%>
+                            一般 <br/>
+                            <%=m.radio_button :a8,4%>
+                            不满意 <br/>
+                            <%=m.radio_button :a8,5%>
+                            很不满意 </p>
+                        </td>
+                      </tr>
+                      <!--题目9-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">9.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您是否接受过博日服务人员的访问?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%=m.radio_button :a9,1,:class=>"required",:title=>"请选择一个"%>
+                            直接访问 ≥ 4 <br/>
+                            <%=m.radio_button :a9,2%>
+                            3次 <br/>
+                            <%=m.radio_button :a9,3%>
+                            2次 <br/>
+                            <%=m.radio_button :a9,4%>
+                            1次 <br/>
+                            <%=m.radio_button :a9,5%>
+                            0次 </p>
+                        </td>
+                      </tr>
+                      <!--题目9-1-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <br/>
+                            <%=m.radio_button :a91,1,:class=>"required",:title=>"请选择一个"%>
+                            电话访问 ≥ 9 <br/>
+                            <%=m.radio_button :a91,2%>
+                            8 ~ 7次 <br/>
+                            <%=m.radio_button :a91,3%>
+                            6 ~ 5次 <br/>
+                            <%=m.radio_button :a91,4%>
+                            4 ~ 3次 <br/>
+                            <%=m.radio_button :a91,5%>
+                            2 ~ 0次 </p>
+                        </td>
+                      </tr>
+                      <!--题目10-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">10.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您对博日售后部门服务人员的服务态度是否感到满意?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%=m.radio_button :a10,1,:class=>"required",:title=>"请选择一个"%>
+                            非常满意 <br/>
+                            <%=m.radio_button :a10,2%>
+                            满意 <br/>
+                            <%=m.radio_button :a10,3%>
+                            一般 <br/>
+                            <%=m.radio_button :a10,4%>
+                            不满意 <br/>
+                            <%=m.radio_button :a10,5%>
+                            很不满意 </p>
+                        </td>
+                      </tr>
+                      <!--题目11-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">11.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您购买仪器之前，一般主要通过什么途径了解产品信息?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a11,{:class=>"required",:title=>"请最少选择一个",:name=> "a11[]"},"1","0"  %>
+                            网络搜索 <br/>
+                            <%= m.check_box :a111,{:name=> "a11[]"},"1","0"  %>
+                            专业期刊 <br/>
+                            <%= m.check_box :a112,{:name=> "a11[]"},"1","0"  %>
+                            电话咨询 <br/>
+                            <%= m.check_box :a113,{:name=> "a11[]"},"1","0"  %>
+                            同行推荐 <br/>
+                            <%= m.check_box :a114,{:name=> "a11[]"},"1","0"  %>
+                            其他 <br/>
+                            如果您选择“其他”，请注明:
+                            <%= m.text_field :a11a,:size=>"50",:maxlength=>"500" %>
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目12-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">12.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您经常登录以下哪些网站搜索产品信息?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a12,{:class=>"required",:title=>"请最少选择一个",:name=>"a12[]"},"1","0"  %>
+                            google <br/>
+                            <%= m.check_box :a121,{:name=>"a12[]"},"1","0"  %>
+                            百度 <br/>
+                            <%= m.check_box :a122,{:name=>"a12[]"},"1","0"  %>
+                            生物谷 <br/>
+                            <%= m.check_box :a123,{:name=>"a12[]"},"1","0"  %>
+                            生物器材网 <br/>
+                            <%= m.check_box :a124,{:name=>"a12[]"},"1","0"  %>
+                            仪器信息网 <br/>
+                            <%= m.check_box :a125,{:name=>"a12[]"},"1","0"  %>
+                            丁香园 <br/>
+                            <%= m.check_box :a126,{:name=>"a12[]"},"1","0"  %>
+                            供应商官方网站 <br/>
+                            <%= m.check_box :a127,{:name=>"a12[]"},"1","0"  %>
+                            其他 <br/>
+                            如果您选择“其他”，请注明:
+                            <%= m.text_field :a12a,:size=>"50",:maxlength=>"500" %>
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目13-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">13.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您登录到供应商网站后，最关注网站的哪些板块?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a13,{:class=>"required",:title=>"请选择一个",:name=>"a13[]"},"1","0"  %>
+                            产品介绍 <br/>
+                            <%= m.check_box :a131,{:name=>"a13[]"},"1","0"  %>
+                            公司新闻 <br/>
+                            <%= m.check_box :a132,{:name=>"a13[]"},"1","0"  %>
+                            应用服务 <br/>
+                            <%= m.check_box :a133,{:name=>"a13[]"},"1","0"  %>
+                            促销信息 <br/>
+                            <%= m.check_box :a134,{:name=>"a13[]"},"1","0"  %>
+                            其他 <br/>
+                            如果您选择“其他”，请注明:
+                            <%= m.text_field :a13a,:size=>"50",:maxlength=>"500" %>
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目14-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">14.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您是通过何种途径了解到博日的?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a14,{:class=>"required",:title=>"请最少选择一个",:name=>"a14[]"},"1","0"  %>
+                            搜索网站（Google/百度） <br/>
+                            <%= m.check_box :a14,{:name=>"a14[]"},"1","0"  %>
+                            专业网站（生物谷等） <br/>
+                            <%= m.check_box :a141,{:name=>"a14[]"},"1","0"  %>
+                            行业展会 <br/>
+                            <%= m.check_box :a142,{:name=>"a14[]"},"1","0"  %>
+                            学术会议 <br/>
+                            <%= m.check_box :a143,{:name=>"a14[]"},"1","0"  %>
+                            宣传资料 <br/>
+                            <%= m.check_box :a144,{:name=>"a14[]"},"1","0"  %>
+                            促销广告 <br/>
+                            <%= m.check_box :a145,{:name=>"a14[]"},"1","0"  %>
+                            其他 <br/>
+                            如果您选择“其他”，请注明:
+                            <%= m.text_field :a14a,:size=>"50",:maxlength=>"500" %>
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目15-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">15.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您对博日科技销售及代理的哪些产品感兴趣?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a15,{:class=>"required",:title=>"请最少选择一个",:name=>"a15[]"},"1","0"  %>
+                            荧光定量PCR系统 <br/>
+                            <%= m.check_box :a151,{:name=>"a15[]"},"1","0"  %>
+                            定性PCR <br/>
+                            <%= m.check_box :a152,{:name=>"a15[]"},"1","0"  %>
+                            金属浴 <br/>
+                            <%= m.check_box :a153,{:name=>"a15[]"},"1","0"  %>
+                            核酸纯化仪 <br/>
+                            <%= m.check_box :a154,{:name=>"a15[]"},"1","0"  %>
+                            标准PCR实验室 <br/>
+                            <%= m.check_box :a155,{:name=>"a15[]"},"1","0"  %>
+                            水槽 <br/>
+                            <%= m.check_box :a156,{:name=>"a15[]"},"1","0"  %>
+                            美国SBP系列移液器 <br/>
+                            <%= m.check_box :a157,{:name=>"a15[]"},"1","0"  %>
+                            美国SBP系列电泳仪 <br/>
+                            <%= m.check_box :a158,{:name=>"a15[]"},"1","0"  %>
+                            美国SBP系列离心机 <br/>
+                            <%= m.check_box :a159,{:name=>"a15[]"},"1","0"  %>
+                            美国SBP系列混匀仪 <br/>
+                            <%= m.check_box :a1510,{:name=>"a15[]"},"1","0"  %>
+                            德国耶拿ScanDrop超微量分光光度计 <br/>
+                            <%= m.check_box :a1511,{:name=>"a15[]"},"1","0"  %>
+                            日本三菱电子数控培养箱 <br/>
+                            <%= m.check_box :a1512,{:name=>"a15[]"},"1","0"  %>
+                            美国ACTGene系列微量分光光度计 <br/>
+                            <%= m.check_box :a1513,{:name=>"a15[]"},"1","0"  %>
+                            美国ACTGene系列大容量电动移液器
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目16-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">16.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您有就博日产品咨询，得到过哪些技术支持?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a16,{:class=>"required",:title=>"请最少选择一个",:name=>"a16[]"},"1","0"  %>
+                            博日800免费服务热线 <br/>
+                            <%= m.check_box :a161,{:name=>"a16[]"},"1","0"  %>
+                            博日技术人员 <br/>
+                            <%= m.check_box :a162,{:name=>"a16[]"},"1","0"  %>
+                            博日代理商/经销商 <br/>
+                            <%= m.check_box :a163,{:name=>"a16[]"},"1","0"  %>
+                            其他 <br/>
+                            如果您选择“其他”，请注明:
+                            <%= m.text_field :a16a,:size=>"50",:maxlength=>"500" %>
+                          </p>
+                        </td>
+                      </tr>
+                      <!--题目17-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">17.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您对博日公司技术支持部门服务人员的服务态度是否感到满意?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%=m.radio_button :a17,1,:class=>"required",:title=>"请选择一个" %>
+                            非常满意 <br/>
+                            <%=m.radio_button :a17,2%>
+                            满意 <br/>
+                            <%=m.radio_button :a17,3%>
+                            一般 <br/>
+                            <%=m.radio_button :a17,4%>
+                            不满意 <br/>
+                            <%=m.radio_button :a17,5%>
+                            很不满意 </p>
+                        </td>
+                      </tr>
+                      <!--题目18-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">18.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您对博日公司技术支持部门服务人员的业务水平是否感到满意?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%=m.radio_button :a18,1,:class=>"required",:title=>"请选择一个"%>
+                            非常满意 <br/>
+                            <%=m.radio_button :a18,2%>
+                            满意 <br/>
+                            <%=m.radio_button :a18,3%>
+                            一般 <br/>
+                            <%=m.radio_button :a18,4%>
+                            不满意 <br/>
+                            <%=m.radio_button :a18,5%>
+                            很不满意 </p>
+                        </td>
+                      </tr>
+                      <!--题目19-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">19.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您实验室近期有以下哪种分析仪器的采购/添置计划?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a19,{:class=>"required",:title=>"请最少选择一个",:name=>"a19[]"},"1","0"  %>
+                            荧光定量PCR系统 <br/>
+                            <%= m.check_box :a191,{:name=>"a19[]"},"1","0"  %>
+                            定性PCR <br/>
+                            <%= m.check_box :a192,{:name=>"a19[]"},"1","0"  %>
+                            金属浴 <br/>
+                            <%= m.check_box :a193,{:name=>"a19[]"},"1","0"  %>
+                            核酸纯化仪 <br/>
+                            <%= m.check_box :a194,{:name=>"a19[]"},"1","0"  %>
+                            标准PCR实验室 <br/>
+                            <%= m.check_box :a195,{:name=>"a19[]"},"1","0"  %>
+                            水槽 <br/>
+                            <%= m.check_box :a196,{:name=>"a19[]"},"1","0"  %>
+                            移液器 <br/>
+                            <%= m.check_box :a197,{:name=>"a19[]"},"1","0"  %>
+                            电泳仪 <br/>
+                            <%= m.check_box :a198,{:name=>"a19[]"},"1","0"  %>
+                            离心机 <br/>
+                            <%= m.check_box :a199,{:name=>"a19[]"},"1","0"  %>
+                            混匀仪 <br/>
+                            <%= m.check_box :a1910,{:name=>"a19"},"1","0"  %>
+                            分光光度计 <br/>
+                            <%= m.check_box :a1911,{:name=>"a19[]"},"1","0"  %>
+                            培养箱 <br/>
+                            <%= m.check_box :a1912,{:name=>"a19[]"},"1","0"  %>
+                            暂无采购计划
+                          </p>
+                        </td>
+                      </tr>
+ 
+                      <!--题目20-->
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02"> </td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"><b><font color="#f5801f">20.</font></b></td>
+                        <td class="bodyText02"> <font color="#f5801f"><b>您是否愿意通过何种方式接收公司产品信息更新?</b></font></td>
+                      </tr>
+                      <tr>
+                        <td class="bodyText02"> </td>
+                        <td class="bodyText02">
+                          <p>
+                            <%= m.check_box :a20,{:class=>"required",:title=>"请最少选择一个",:name=>"a20[]"},"1","0"  %>
+                            邮件/快递 <br/>
+                            <%= m.check_box :a201,{:name=>"a20[]"},"1","0"  %>
+                            电子邮件 <br/>
+                            <%= m.check_box :a202,{:name=>"a20[]"},"1","0"  %>
+                            销售人员上门 <br/>
+                            <%= m.check_box :a203,{:name=>"a20[]"},"1","0"  %>
+                            我不愿意接收
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p align="center"><b>~
+                      謝謝
+                      ~</b></p>
+                  <p align="center">
+                    <%= submit_tag "传送",:id => "submit" %>
+                  </p>
+                  <br/>
+
+
+                <% end %>
+                <script language="JavaScript" type="text/JavaScript">
+                  var message='<pre><a href=#top><font class=bodyText01>返回最上</font></a></pre>'
+                  var backgroundcolor="white"
+                  var displaymode=0
+                  var displayduration=10000
+                  var flashmode=0
+                  var flashtocolor="white"
+
+                  function regenerate(){
+                    window.location.reload()
+                  }
+
+                  var which=0
+
+                  function regenerate2(){
+                    if (document.layers)
+                      setTimeout("window.onresize=regenerate",400)
+                  }
+
+
+                  function display2(){
+                    if (document.layers){
+                      if (topmsg.visibility=="show")
+                        topmsg.visibility="hide"
+                      else
+                        topmsg.visibility="show"
+                    }
+                    else if (document.all){
+                      if (topmsg.style.visibility=="visible")
+                        topmsg.style.visibility="hidden"
+                      else
+                        topmsg.style.visibility="visible"
+                      setTimeout("display2()",Math.round(Math.random()*10000)+10000)
+                    }
+                  }
+
+                  function flash(){
+                    if (which==0){
+                      if (document.layers)
+                        topmsg.bgColor=flashtocolor
+                      else
+                        topmsg.style.backgroundColor=flashtocolor
+                      which=1
+                    }
+                    else{
+                      if (document.layers)
+                        topmsg.bgColor=backgroundcolor
+                      else
+                        topmsg.style.backgroundColor=backgroundcolor
+                      which=0
+                    }
+                  }
+
+
+                  if (document.all){
+                    document.write('<span id="topmsg" style="position:absolute;visibility:hidden">'+message+'</span>')
+                  }
+
+                  function logoit(){
+                    //document.all.topmsg.style.left=document.body.scrollLeft+document.body.clientWidth/2-document.all.topmsg.offsetWidth/2
+                    document.all.topmsg.style.left=635
+                    document.all.topmsg.style.top=document.body.scrollTop+document.body.clientHeight-document.all.topmsg.offsetHeight-4
+                  }
+
+
+                  function logoit2(){
+                    //topmsg.left=pageXOffset+window.innerWidth/2-topmsg.document.width/2
+                    topmsg.left=635
+                    topmsg.top=pageYOffset+window.innerHeight-topmsg.document.height-5
+                    setTimeout("logoit2()",90)
+                  }
+
+                  function setmessage(){
+                    //document.all.topmsg.style.left=document.body.scrollLeft+document.body.clientWidth/2-document.all.topmsg.offsetWidth/2
+                    document.all.topmsg.style.left=635
+                    document.all.topmsg.style.top=document.body.scrollTop+document.body.clientHeight-document.all.topmsg.offsetHeight-4
+                    document.all.topmsg.style.backgroundColor=backgroundcolor
+                    document.all.topmsg.style.visibility="visible"
+                    if (displaymode==1)
+                      setTimeout("topmsg.style.visibility='hidden'",displayduration)
+                    else if (displaymode==2)
+                      display2()
+                    if (flashmode==1)
+                      setInterval("flash()",1000)
+                    window.onscroll=logoit
+                    window.onresize=new Function("window.location.reload()")
+                  }
+
+
+                  function setmessage2(){
+                    topmsg=new Layer(window.innerWidth)
+                    topmsg.bgColor=backgroundcolor
+                    regenerate2()
+                    topmsg.document.write(message)
+                    topmsg.document.close()
+                    logoit2()
+                    topmsg.visibility="show"
+                    if (displaymode==1)
+                      setTimeout("topmsg.visibility='hide'",displayduration)
+                    else if (displaymode==2)
+                      display2()
+                    if (flashmode==1)
+                      setInterval("flash()",1000)
+                  }
+
+
+                  if (document.layers)
+                    window.onload=setmessage2
+                  else if (document.all)
+                    window.onload=setmessage
+                </script>
+              </td>
+              <td> </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>

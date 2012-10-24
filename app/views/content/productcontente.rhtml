@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Products Center</title>
+<%= stylesheet_link_tag 'content_en' %>
+<style  type="text/css">  
+body 
+{  
+     scrollbar-face-color:  #DEE3E7;  
+     scrollbar-highlight-color:  #FFFFFF;  
+     scrollbar-shadow-color:  #DEE3E7;  
+     scrollbar-3dlight-color:  #D1D7DC;  
+     scrollbar-arrow-color:    #006699;  
+     scrollbar-track-color:  #EFEFEF;  
+     scrollbar-darkshadow-color:  #98AAB1;  
+        
+}  
+</style>  
+
+
+<script>
+<!--
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+ parent.document.getElementById("frame1").style.height = this.document.body.scrollHeight;
+parent.setTop();
+}
+//-->
+</script>
+</head>
+
+<body onload="setTab(0,0)">
+  <!--
+  <div id="banner">
+  <%=@name %>
+  <%=@id%>
+  </div>
+  -->
+  <div id="tabs0">
+   <ul id="menu0">
+    <li onclick="setTab(0,0)" class="hover" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'"  >Product Introduce</li>
+    <li onclick="setTab(0,1)" class="hover" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'" >Parameter List</li>
+    <!--<li onclick="setTab(0,2)" class="hover">-->
+    <li class="hover">
+      <a style="cursor:pointer" onClick='window.open("/aboutbioere/aboutbioere?id=006005")'>Contact</a>
+   </li>
+   </ul>
+   <div id="main0" style="overflow: hidden;">
+    <% for cpzx in @cpzx %>
+    <ul id="block">
+      <li>
+        <div id="cpjj">
+	<span>  
+          <% if cpzx.summarypic != "" and cpzx.summarypic != nil %>
+          <% @category = cpzx %>
+          <!--<img src="<%=cpzx.summarypic%>" alt="bioer company" align="right" height="138" width="224" hspace = "20"  />-->
+          <%=image_tag url_for_file_column(:category,:summarypic),:height => '101', 
+            :width => '166',:style=> 'float:right;padding-left:15px;' %>
+          <% end %>
+          <pre><font style="font-size: 12px;font-family: Arial, Helvetica, sans-serif;"><%=cpzx.summary%></font></pre>
+        
+        </span>  
+
+	</div> 
+        <div id="cpjj1">
+        <% if cpzx.particularcontent != "" and cpzx.particularcontent != nil %>
+        <span id="cpjjspan"><a href="/content/productdetaile?id=<%=cpzx.categoryid%>" target="_blank">More&nbsp;&raquo;</a></span>
+	<% end %>
+        </div>
+        <% for cpzxdetail in @cpzxdetail  %>
+        <div id="cpjjdetail">
+        <div id="cpjjdetailimg">
+          <% if cpzxdetail.summarypic != "" and cpzxdetail.summarypic != nil %>
+          <% @categorylist = cpzxdetail %>
+
+          <% if cpzxdetail.content != "" and cpzxdetail.content != nil %>
+          <a href="/content/productlistdetaile?id=<%=cpzxdetail.id%>" target="_blank">
+          <%=image_tag url_for_file_column(:categorylist,:summarypic),:height => '96', 
+            :width => '161',:border => 0,:style=>'cursor:pointer' %>
+          </a>
+          <% else %>
+         <%=image_tag url_for_file_column(:categorylist,:summarypic),:height => '96', 
+            :width => '161',:onClick => 'setTab(0,1)',:style=>'cursor:pointer' %>
+          <% end  %>
+
+          <% end %>
+        </div>
+        <div id="cpjjdetailcontent">
+        <span id="titledetail"><%=cpzxdetail.title%></span><br />
+	<p id="cpjjsummary"><%=cpzxdetail.summary%></p>
+        </div> 
+        </div>  
+        <% end %>
+      </li></ul>
+      <ul id="block1"><li><div id="cssz" style="overflow: hidden;"><font size="12"><%=cpzx.content%></font></div></li></ul>
+    <ul></ul>
+    <% end %>
+   </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  
+</body>
+</html>

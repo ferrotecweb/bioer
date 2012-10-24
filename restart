@@ -1,0 +1,5 @@
+#!/bin/bash
+#git pull
+sudo mongrel_rails cluster::stop
+sudo mongrel_rails cluster::start
+sudo /etc/init.d/apache2 restart

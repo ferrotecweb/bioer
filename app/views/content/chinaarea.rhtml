@@ -1,0 +1,97 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>中国地区</title>
+<%= stylesheet_link_tag 'content' %>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function toggle(targetid,objN){   
+      var target=document.getElementById(targetid);
+      var aa=document.getElementById(objN)
+      if (target.style.display=="block"){
+          target.style.display="none";
+
+      } else {
+          target.style.display="block";
+          parent.document.all.frame1.height = document.body.scrollHeight; 
+      }
+}
+-->
+</script>
+</head>
+
+<body>
+  <div id="yylybanner">中国地区</div>
+  <div id="zgdqcontent">  
+  <ul id="zgdqtitledetail">
+    <% 
+        @count = 0
+        for zgdq in @zgdq  
+          @count = @count + 1
+          @str = "div" + @count.to_s
+          
+    %>
+    <% if @count == 1  %>
+        <li id="bb"><span  id="zgdqtitle"><%=zgdq.area %></span><br /></li>
+    <% 
+        @area = zgdq.area
+        else  
+    %>
+        <% if zgdq.area != @area %>
+          <!-- 处理背景线 -->   
+
+          <li id="bb"><div id="zgdqimg"></div></li>
+          <li id="bb"><span  id="zgdqtitle"><%=zgdq.area %></span><br /></li>
+        <% end %>
+    <% 
+        @area = zgdq.area
+        end 
+    %>
+    <li id="bb" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'" onClick="toggle('<%=@str%>','bb')" style="cursor:pointer">
+    <span id="company" ><img src="/images/gif-0961.gif" alt="checkdown" border="0" height="15" width="17"   style="float:left" /><%=zgdq.company%></span></li> 
+          <div id="<%=@str%>" class="info">
+            <table width="450px" cellpadding="0" cellspacing="0" id ="infotable" align="left" >
+              <% if zgdq.addr != "" and zgdq.addr != nil %>
+              <tr>
+                <td width="30px" >地址:</td>
+                <td width="400"  colspan="5" align="left"><%=zgdq.addr%></td>
+              </tr>
+              <% end %>             
+              <tr>
+                <td width="30" >电话:</td>
+                <td width="150" align="left"><%=zgdq.phone%></td>
+                <td width="40" >传真:</td>
+                <td width="120" align="left"><%=zgdq.fax%></td>
+                <td width="30" >邮编:</td>
+                <td width="70" align="left"><%=zgdq.zipcode%></td>
+              </tr>
+              <tr>
+                <td width="50" >联系人:</td>
+                <td width="100" align="left"><%=zgdq.person%></td>
+                <td width="30" >邮箱:</td>
+                <td width="200" colspan="2" align="left"><a href="mailto:'<%=zgdq.email%>'"><%=zgdq.email%></a></td>
+              </tr>
+              <% if zgdq.province != "" and zgdq.province != nil %>
+              <tr>
+                <td width="30" >省份:</td>
+                <td width="400" colspan="5" align="left"><%=zgdq.province%></td>
+              </tr>
+              <% end %>
+              <% if zgdq.supplybound != "" and zgdq.supplybound != nil %>
+              <tr>
+                <td width="80" >代理范围:</td>
+                <td width="320" colspan="5" align="left"><%=zgdq.supplybound%></td>
+              </tr>
+              <% end %>
+              <tr><td height="20px"></td></tr>
+            </table>
+          </div>
+
+          <div id="clear"></div>
+    </ul>
+  <% end %>
+  </div>
+  
+</body>
+</html>

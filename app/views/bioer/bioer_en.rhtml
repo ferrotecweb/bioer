@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<%= stylesheet_link_tag 'basic_en' %>
+<style type="text/css">
+/* common styling */
+/* set up the overall width of the menu div, the font and the margins */
+.menu {
+	font-family: arial, sans-serif;
+	width:782px;
+	margin:0;
+        padding:0; 
+	/*margin:1px;*/
+}
+/* remove the bullets and set the margin and padding to zero for the unordered list */
+.menu ul {
+padding:0; 
+margin:0;
+list-style-type: none;
+}
+/* float the list so that the items are in a line and their position relative so that the drop down list will appear in the right place underneath each list item */
+.menu ul li {
+float:left; 
+position:relative;
+}
+/* style the links to be 104px wide by 30px high with a top and right border 1px solid white. Set the background color and the font size. */
+.menu ul li a, .menu ul li a:visited {
+display:block; 
+text-align:center; 
+text-decoration:none; 
+width:103px; 
+height:24px; 
+color:#FFFFFF; 
+border:0px solid #fff;
+border-width:0px 0px 0 0;
+background-image: url(/images/middle1.jpg);
+line-height:24px; 
+font-size:12px;
+}
+/* make the dropdown ul invisible */
+.menu ul li ul {
+display: none;
+}
+/* specific to non IE browsers */
+/* set the background and foreground color of the main menu li on hover */
+.menu ul li:hover a {
+color:#fff; 
+background:#b3ab79;
+background-image: url(/images/middle3.jpg);
+}
+/* make the sub menu ul visible and position it beneath the main menu list item */
+.menu ul li:hover ul {
+display:block; 
+position:absolute; 
+top:24px; 
+left:0; 
+width:125px;
+}
+/* style the background and foreground color of the submenu links */
+.menu ul li:hover ul li a {
+display:block; 
+/*background:#faeec7; */
+background:#FFFFFF; 
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #000000; 
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #000000; 
+height:18px;
+line-height:18px;
+text-align:left;
+padding-left:4px;
+color:#000;
+}
+/* style the background and forground colors of the links on hover */
+.menu ul li:hover ul li a:hover {
+/* background:#dfc184; */
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #666666;  
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #666666;  
+background:#CCCCCC;
+color:#000;
+}
+.menu ul li.left a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/sleft.jpg);
+}
+.menu ul li.right a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/sright.jpg);
+}
+.menu ul li.aa a{
+background-image: url(/images/middle2.jpg);
+width:130px;
+}
+
+.menu ul li.aa a:hover {
+background-image: url(/images/middle3.jpg);  
+color:#000;
+}
+.menu ul li.aa a:hover ul.bb a{
+width:131px;
+text-align:left;
+padding-left:4px;
+/*text-align:left;*/
+}
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+/* styling specific to Internet Explorer IE5.5 and IE6. Yet to see if IE7 handles li:hover */
+/* Get rid of any default table style */
+table {
+border-collapse:collapse;
+margin:0; 
+padding:0;
+}
+/* ignore the link used by 'other browsers' */
+.menu ul li a.hide, .menu ul li a:visited.hide {
+display:none;
+}
+/* set the background and foreground color of the main menu link on hover */
+.menu ul li a:hover {
+color:#fff; 
+background:#b3ab79;
+background-image: url(/images/middle3.jpg);
+}
+/* make the sub menu ul visible and position it beneath the main menu list item */
+.menu ul li a:hover ul {
+display:block; 
+position:absolute; 
+top:24px; 
+left:0; 
+width:125px;
+}
+/* style the background and foreground color of the submenu links */
+.menu ul li a:hover ul li a {
+/*background:#faeec7; */
+background:#FFFFFF;
+
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #000000; 
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #000000; 
+height:18px;
+line-height:18px;
+text-align:left;
+padding-left:4px;
+color:#000;
+}
+/* style the background and forground colors of the links on hover */
+.menu ul li a:hover ul li a:hover {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #666666;  
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #666666;  
+background:#CCCCCC;
+color:#000;
+}
+.menu ul li.left a{
+	width:16px;
+        height:24px;
+	background-image: url(/images/sleft.jpg);
+	/*border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #12171D;*/
+}
+.menu ul li.right a{
+	width:16px;
+	height:24px;
+	background-image: url(/images/sright.jpg);
+	/*border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #12171D;*/
+}
+.menu ul li.aa {
+background-image: url(/images/middle2.jpg);
+width:130px;
+height:24px;
+}
+.menu ul li.aa a:hover {
+background-image: url(/images/middle3.jpg); 
+width:130px;
+color:#000;
+}
+.menu ul li.aa a:hover ul.bb a{
+width:131px;
+text-align:left;
+padding-left:4px;
+/*text-align:left;*/
+}
+</style>
+<![endif]-->
+<style type="text/css"> 
+<!-- 
+.box1{ 
+    min-height:60px;
+    width: 203px;
+    height: 60px;
+    float: left;
+    padding-top:10px;
+}
+.box3{ min-height:60px;
+    height: 60px;
+    width: 360px;
+    float: left;
+}
+.box2{  
+    min-height:60px;
+    height: 60px;
+    width: 210px;
+    float: left;
+    padding-top:10px;
+        /*border: 1px solid red;*/
+} 
+.clear{
+ clear:both; 
+}
+
+--> 
+</style>
+
+<script language="JavaScript" type="text/JavaScript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+</script>
+<title>Bioer</title>
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12222813-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body id="body">
+<center>  
+<div id="all">
+        <div id="top">
+	<div class="box1"><img src="/images/eindex1_05.jpg" alt="ferrotec" width="203" height="57" border="0" /></div>
+        <div class="box3"></div>
+        <div class="box2">
+          <form method="get" action="http://www.google.com/custom" target="_blank">
+          <table border="0" cellpadding="0" cellspacing="0" align="right">
+            <tr>
+              <td width="50px" height="20px" align="left"><a href="/bioer/bioer_en">&nbsp;&nbsp;Home</a></td>
+              <td width="20" align="center">|</td>
+              <td width="50px" align="center"><a href="/aboutbioere/aboutbioere?id=006005">Contact</a></td>
+              <td width="20" align="center">|</td>
+              <td width="60px" align="left"><a href="/bioer/bioerfirstpage">&nbsp;&nbsp;Chinese</a></td>
+            </tr>
+            <tr>
+              <td colspan="4" height="30px">
+                <input type="text" name="q" size="15" maxlength="255" value="" />
+                <input type="hidden" name="hl" value="zh-cn" />
+                <input type="hidden" name="ie" value="utf-8" />
+                <input type="hidden" name="oe" value="utf-8" />
+              </td>
+              <td align="left">
+                <input type="submit" name="sa" value="" class="bottom" />
+              </td>
+              <td>
+                <input type="hidden" name="domains" value="www.bioer.com.cn" />
+                <input type="hidden" name="sitesearch" value="www.bioer.com.cn" />
+              </td>
+            </tr>
+          </table>
+          </form>
+        </div>
+	</div>   
+<div class="clear"></div>
+	<div id="flash">
+          <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="780" height="250">
+          <param name="movie" value="<%=@flashurl%>" />
+          <param name="quality" value="high" />
+          <embed src="<%=@flashurl%>" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="780" height="250"></embed>
+          </object>
+	</div>
+        <div class="clear"></div>
+	<div class="menu">
+          <ul>
+          <li class="left"><a></a></li>
+          <!--产品中心-->
+          <li class="aa"><a class="hide" href="/productcentere/productcentere?id=001">Products</a>
+          <!--[if lte IE 6]>
+          <a href="/productcentere/productcentere?id=001" title="" width="125">Products
+          <table width="125"><tr><td width="125">
+          <![endif]-->
+              <ul class="bb">
+              <% 
+              @count = 0
+              for menue1 in @menue1 
+              @count = @count + 1  
+              %>
+                <% if @menue1.size == @count %>
+                    <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; ">
+                      <a href="/productcentere/productcentere?id=<%=menue1.categoryid%>" title="" ><%=h menue1.categoryname%>
+                      </a>
+                    </li>
+                <% else %>
+                  <li><a href="/productcentere/productcentere?id=<%=menue1.categoryid%>" title=""><%=h menue1.categoryname%></a></li>
+                <% end  %>
+              <% end %>
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--市场应用-->
+          <li><a class="hide" href="/solveprecente/solveprecente?id=002" title="">Markets</a>
+          <!--[if lte IE 6]>
+          <a  href="/solveprecente/solveprecente?id=002" title="">Markets
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menue2 in @menue2
+              @count = @count + 1                 
+              %>
+              <% if @menue2.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/solveprecente/solveprecente?id=<%=menue2.categoryid%>"><%=h menue2.categoryname %></a></li>
+              <% else %>
+                <li><a href="/solveprecente/solveprecente?id=<%=menue2.categoryid%>"><%=h menue2.categoryname %></a></li>
+              <% end %>
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--支持服务-->
+          <li><a class="hide" href="/serveareae/serveareae?id=<%=@minmenue3%>" title="">Support</a>
+          <!--[if lte IE 6]>
+          <a  href="/serveareae/serveareae?id=<%=@minmenue3%>" title="">Support
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menue3 in @menue3 
+              @count = @count + 1  
+              %>
+              <% if @menue3.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/serveareae/serveareae?id=<%=menue3.categoryid%>"><%=h menue3.categoryname %></a></li>
+              <% else %>
+                <li><a href="/serveareae/serveareae?id=<%=menue3.categoryid%>"><%=h menue3.categoryname %></a></li>
+              <% end %>              
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--新闻中心-->
+          <li><a class="hide" href="/newscentere/newscentere?id=<%=@minmenue4%>">News Center</a>
+          <!--[if lte IE 6]>
+          <a  href="/newscentere/newscentere?id=<%=@minmenue4%>">News Center
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <%
+              @count = 0
+              for menue4 in @menue4 
+              @count = @count + 1 
+              %>
+              <% if @menue4.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/newscentere/newscentere?id=<%=menue4.categoryid%>"><%=h menue4.categoryname %></a></li>         
+               <% else %>
+                <li><a href="/newscentere/newscentere?id=<%=menue4.categoryid%>"><%=h menue4.categoryname %></a></li>         
+              <% end %>             
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--营销网络-->
+          <li><a class="hide" href="/businessnetworke/businessnetworke?id=<%=@minmenue5%>">Sales Network</a>
+          <!--[if lte IE 6]>
+          <a  href="/businessnetworke/businessnetworke?id=<%=@minmenue5%>">Sales Network
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <%
+              @count = 0 
+              for menue5 in @menue5 
+              @count = @count + 1 
+              %>
+              <% if @menue5.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/businessnetworke/businessnetworke?id=<%=menue5.categoryid%>"><%=h menue5.categoryname %></a></li>
+              <% else %>
+                <li><a href="/businessnetworke/businessnetworke?id=<%=menue5.categoryid%>"><%=h menue5.categoryname %></a></li>
+              <% end %>                
+              <% end %>	
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--关于博日-->
+          <li><a class="hide" href="/aboutbioere/aboutbioere?id=<%=@minmenue6%>">About Us</a>
+          <!--[if lte IE 6]>
+          <a  href="/aboutbioere/aboutbioere?id=<%=@minmenue6%>">About Us
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menue6 in @menue6 
+              @count = @count + 1 
+              %>
+              <% if @menue6.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/aboutbioere/aboutbioere?id=<%=menue6.categoryid%>"><%=h menue6.categoryname %></a></li>
+              <% else %>
+                <li><a href="/aboutbioere/aboutbioere?id=<%=menue6.categoryid%>"><%=h menue6.categoryname %></a></li>
+              <% end %>                
+              <% end %>    
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <!--交流园地-->
+          <li><a class="hide" href="/communione/communione?id=<%=@minmenue7%>">Communication</a>
+          <!--[if lte IE 6]>
+          <a  href="/communione/communione?id=<%=@minmenue7%>">Communication
+          <table><tr><td>
+          <![endif]-->
+              <ul>
+              <% 
+              @count = 0
+              for menue7 in @menue7 
+              @count = @count + 1 
+              %>
+              <% if @menue7.size == @count %>
+                <li style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #666666; "><a href="/communione/communione?id=<%=menue7.categoryid%>"><%=h menue7.categoryname %></a></li>
+              <% else %>
+                <li><a href="/communione/communione?id=<%=menue7.categoryid%>"><%=h menue7.categoryname %></a></li>
+              <% end %>                 
+              <% end %>
+              </ul>
+          <!--[if lte IE 6]>
+          </td></tr></table>
+          </a>
+          <![endif]-->
+          </li>
+          <li class="right"><a></a></li>
+          </ul>
+          <!-- clear the floats if required -->
+          <div class="clear"> </div>
+    </div>
+ <div class="clear"></div>
+
+<div id="firstmiddle">
+	<div id="company">
+	<span id="blueHead">About Bioer</span><br />
+        <p id="aboutbioer">Bioer Technology CO.,LTD is a professional enterprise, major in development, production, marketing and service for life science instruments and reagents, with the floor space of 26,000sq.m. Bioer has high-class establishments such as 10,000 class super clean workshop, GMP reagent workshop, Laboratory Center, and so on. Bioer has around 100 staffs in total.</p>
+        <p id="aboutbioer">The predecessor of Bioer is R&D department of Ferrotec China. With the development of business, BIOER became an independent company departing from Ferrotec China in 2002. <img src="/images/aboutus_07.jpg" alt="bioer company" align="left" height="96" width="250" style="float:right;padding-top:8px;" />Ferrotec is one of the largest high-quality Peltier suppliers in the world.<br /><br /> 
+        <a href="/aboutbioere/aboutbioere?id=<%=@minmenue6%>">More&nbsp;&raquo;</a>
+	</p> 
+	</div>
+
+	<div id="productinfo">
+		<span id="blueHead">Bioer Products</span><br />
+		<p id="warning">
+                <% for menue1 in @menue1 %>
+                  <a href="/productcentere/productcentere?id=<%=menue1.categoryid%>">
+                  <span id="abc">&raquo;</span>&nbsp;<%=h(menue1.categoryname) %>&nbsp;</a><br />
+                <% end %>
+		</p>
+                <br/>
+		<p>
+                <% if @topurl.size > 0 %>
+                  <% for url in @topurl %>
+                  <a  href="/productcentere/productcentere?id=<%=url.categoryid%>">
+                  <img src="/images/00.gif" alt="product" border="0" height="65" width="166" style="cursor:hand" />
+                  </a>
+                  <% end %>
+                <% else %>
+                  <img src="/images/00.gif" alt="product" border="0" height="65" width="166" />
+                <% end %>
+                </p>
+	</div>
+	<div id="news">
+		<p id ="topimg">
+		<span id="blueHead">&nbsp;&nbsp;&nbsp;&nbsp;News & Events</span>
+		<span id="news1"><a href="/newscentere/newscentere?id=<%=@minmenue4%>">More&nbsp;&raquo;&nbsp;&nbsp;</a></span>
+		</p>
+                <% for news in @news %>
+                <div id="middleimg">
+		<a href="#" style="cursor:hand" onClick='window.open("/content/newsdetaile?id=<%=news.id%>","","scrollbars=yes,width=600,height=360,top=200,resizable=yes")'><%=h truncate(news.title,70) %></a>
+                </div>
+                <% end %>   
+                 <div class="clear"></div>
+                <div><p id="bottomimg">&nbsp;</p></div>
+                <div id="yqlj">
+                  <br/>
+                  <p>&nbsp;&nbsp;Friend Link:</p>
+                  <p>&nbsp;
+                    <select name="select" onChange="MM_jumpMenu('parent',this,0)" width="80px">
+                          <option value="/bioer/bioerfirstpage">Hangzhou Bioer ...</option>
+                          <option value="http://www.ferrotec.com.cn">Hangzhou Dahe ..</option>
+                          <option value="http://www.youhaoyijian.com">Hangzhou Youhao ...</option>
+                          <option value="http://www.acmhz.com">Advanced Ceramic...</option>  
+                          <option value="http://www.wagenchina.com.cn">Hangzhou Wagen...</option>
+                          <option value="http://www.ferrotec.sh.cn">Shanghai Shenhe...</option>
+                          <option value="http://www.hanhong.sh.cn/">Shanghai Hanhong..</option>
+                          <!--<option value="http://www.hanhong.sh.cn/">├Shanghai Hanhong...</option>-->
+                     </select>
+                  </p>
+                  <p>
+                    <!-- target="_parent" -->         
+                    <a href="http://www.ferrotec.com.cn/" target="_blank">
+                      <img src="/images/yqlj1.jpg" alt="ferrotec" border="0" height="18" width="73" />
+                    </a>
+                    <a href="http://wagenchina.com.cn/" target="_blank">
+                      <img src="/images/yqlj2.jpg" alt="youhao" border="0" height="18" width="73" />
+                    </a>
+                    <a href="http://www.youhaoyijian.com/" target="_blank">
+                      <img src="/images/yqlj3.jpg" alt="youbing" border="0" height="18" width="47" />
+                    </a>
+                    </p>
+                </div>
+	</div>
+
+</div>
+</div>
+<div id="aboutfooter">
+<p><img src="/images/bottomlline.jpg" width="780" height="5"></p>
+<p>Copyright @ 2009 - 2015 Bioer.All Rights Reserved</p>
+<p></p>
+</div>
+</center>
+</body>
+</html>
+

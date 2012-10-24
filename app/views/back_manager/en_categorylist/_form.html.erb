@@ -1,0 +1,30 @@
+
+<%= error_messages_for 'categorylist' %>
+<br/>
+<% 
+    if @flag == 1 then 
+%>
+<p><label for="categorylist_categoryid">所属栏目</label><br/>
+    <%= select 'categorylist', 'categoryid', 
+                Category.find_by_sql("select cy.categoryid,case when length(categoryid) = 9 then concat('----',cy.categoryname) else  cy.categoryname  end  as categoryname from
+(select case when length(categoryid) = 3 then categoryname else  concat('----',categoryname)  end  as categoryname,categoryid 
+from en_categories) cy order by cy.categoryid").collect{ |p| [p.categoryname, p.categoryid] },
+                { :include_blank => true } %>
+</p>
+<% end %>
+<br/>
+<p><label for="categorylist_title">标题名称</label><br/>
+<%= text_field 'categorylist', 'title', :id => 'text'  %></p>
+<br/>
+<p><label for="categorylist_summary">图文简介</label><br/>
+<%= text_area 'categorylist', 'summary', :id => 'textarea'  %></p>
+<br/>
+<p><label for="categorylist_summarypic">图片路径</label><br/>
+<%= file_column_field 'categorylist', 'summarypic',:id => 'image'  %></p>
+<br/>
+<p><label for="categorylist_downloadfile">上传文件</label><br/>
+<%=file_field 'categorylist','downloadfile',:id => 'image'%>   </p>
+<br/>
+<p><label for="categorylist_content">详细内容</label><br/>
+<%= fckeditor_textarea('categorylist', 'content',:toolbarSet => 'Simple', :width => '550px', :height => '300px') %>
+</p>  

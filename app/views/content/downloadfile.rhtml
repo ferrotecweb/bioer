@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>下载页面</title>
+<%= stylesheet_link_tag 'content' %>
+
+
+</head>
+<body>
+  <% if @downloadfile.size == 0  %>
+    <div id="download">无下载数据</div>
+<% else %>
+  <div id="download">
+    <% for downloadfile in @downloadfile %>
+    <div id="download1">
+      <%=downloadfile.title%>
+    </div>
+    <div id="download2"></div>
+    <div id="download3">
+      <% if downloadfile.summarypic != "" and downloadfile.summarypic != nil %>
+      <% @categorylist = downloadfile %>
+      <%=image_tag url_for_file_column(:categorylist,:summarypic),:height => '250', :width => '200' %>  
+      <% end %>
+    </div>
+    
+    <div id="download4">
+      <% if downloadfile.downloadfile != "" and downloadfile.downloadfile != nil %>
+      <a href="/download/<%=downloadfile.downloadfile%>" target="_blank">点击这里下载：<%=downloadfile.downloadfile%></a>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</body>
+</html>

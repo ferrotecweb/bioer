@@ -1,0 +1,78 @@
+
+<%= error_messages_for 'category' %>
+<br/>
+<% 
+    if @flag == 1 then 
+     @category.categoryid = @getmaxcategoryid
+%>
+<p><label for="category_id">栏目编号</label><br/>
+<%= text_field 'category', 'categoryid',:readonly => true, :id => 'text'   %></p>
+<% else %>
+<p><label for="category_id">栏目编号</label><br/>
+<%= text_field 'category', 'categoryid',:readonly => true, :id => 'text'   %></p>
+<% end %>
+<br/>
+<p><label for="category_name">栏目名称</label><br/>
+<%= text_field 'category', 'categoryname', :id => 'text'  %>&nbsp;&nbsp;&nbsp;&nbsp;
+<% if @flag == 1 %>
+  <%   if @getmaxcategoryid.slice(0,3) =="001" and @getmaxcategoryid.length == 9  %>
+  <label for="category_istop">设置最新</label>
+  <%= check_box 'category', 'istop'  %>
+  <% end %>
+<% end %>
+<% if @flag == 0 %>
+  <%   if @category.categoryid.slice(0,3) =="001" and @category.categoryid.length == 9  %>
+  <label for="category_istop">设置最新</label>
+  <%= check_box 'category', 'istop'  %>
+  <% end %>
+<% end %>
+</p>
+<br/>
+<% 
+    if @flag == 1 then 
+    case  @getmaxcategoryid.slice(0,3) 
+    when "001"
+        if @getmaxcategoryid.length == 6
+          @category.url = "/content/producttypee?id=" + @getmaxcategoryid
+        else
+          @category.url = "/content/productcontente?id=" + @getmaxcategoryid
+        end
+    when "002"
+        @category.url = "/content/applyfielde?id=" + @getmaxcategoryid
+    when "003"
+        @category.url = "/content/serveareae?id=" + @getmaxcategoryid
+    when "004"
+        @category.url = "/content/newscentere?id=" + @getmaxcategoryid
+    when "005"
+        @category.url = "/content/chinaareae?id=" + @getmaxcategoryid
+    when "006"
+        @category.url = "/content/bioerintroducee?id=" + @getmaxcategoryid
+    when "007"
+        @category.url = "/content/communione?id=" + @getmaxcategoryid
+    else
+        @category.url = ""
+    end
+%>
+<p><label for="category_url">栏目链接</label><br/>
+<%= text_field 'category', 'url', :readonly => true,:id => 'text'  %></p>
+<% else %>
+<p><label for="category_url">栏目链接</label><br/>
+<%= text_field 'category', 'url',:readonly => true, :id => 'text'   %></p>
+<% end %>
+<br/>
+
+<p><label for="categorylist_summary">栏目内容</label><br/>
+<%= text_area 'category', 'summary', :id => 'textarea',:size => 255 %></p>
+<br/>
+
+<p><label for="categorylist_summarypic">图片路径</label><br/>
+<%= file_column_field 'category', 'summarypic' ,:id => 'image'  %></p>
+<br/>
+
+<p><label for="category_content">参数列表</label><br/>
+<%= fckeditor_textarea('category', 'content',:toolbarSet => 'Simple', :width => '550px', :height => '300px') %>
+</p>  
+
+<p><label for="category_particularcontent">详细内容</label><br/>
+<%= fckeditor_textarea('category', 'particularcontent',:toolbarSet => 'Simple', :width => '550px', :height => '300px') %>
+</p>  

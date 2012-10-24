@@ -1,0 +1,39 @@
+<div id="contactlist">
+<div id="contact">
+<br/>
+<h3>产品注册信息一览</h3>
+<br/>
+<table id="table" cellpadding="0" cellspacing="0">
+  <tr id="tabletr">
+    <td width="140px">仪器注册号</td>
+    <td width="140px">单位</td>
+    <td width="50px">电话</td>
+    <td width="50px">联系人</td>
+    <td width="200px">地址</td>
+    <td width="70px">创建日期</td>
+    <td width="70px" colspan="3"></td>
+  </tr>
+  <% for register in @register %>
+  <tr>
+    <td><%=register.productregisterno %>&nbsp;</td>
+    <td><%=h(truncate(register.company,10))%>&nbsp;</td>
+    <td><%=register.phone%>&nbsp;</td>
+    <td><%=h(truncate(register.linkman,20))%>&nbsp;</td>
+    <td><%=register.address%>&nbsp;</td>
+    <td ><%= h(register.created_at.strftime("%Y-%m-%d")) %>&nbsp;</td>
+    <td><%= link_to '查看详细', :action => 'detail_register', :id => register %></td>
+    <td><%= link_to '删除', :action => 'delete_register', :id => register %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+
+<div id="fy">
+<%= will_paginate @register,
+:inner_window => 1,
+:outer_window => 1,
+:prev_label => '上一页',
+:next_label => '下一页'
+%>
+</div>
+</div>

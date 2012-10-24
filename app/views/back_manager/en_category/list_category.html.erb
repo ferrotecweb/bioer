@@ -1,0 +1,53 @@
+
+<div id="category">
+<br/>
+<h3>栏目一览</h3>
+<br/>
+<table id="table" cellpadding="0" cellspacing="0">
+  <tr id="tabletr">
+    <td width="500">栏目名</td>
+    <td width="200" colspan="4">操作栏</td>
+  </tr>
+  <% for category in @all_categorys %> 
+  <tr>
+    <% 
+      if category.categoryid.to_s.length == 3  then
+    %>
+    <td align="left"><%=category.categoryname%>&nbsp;</td>
+    <% end %>
+    <% 
+      if category.categoryid.to_s.length == 6  then
+    %>
+    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<%=category.categoryname%>&nbsp;</td>
+    <% end %>
+    <% 
+        if category.categoryid.to_s.length == 9  then
+    %>
+    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<%=category.categoryname%>&nbsp;</td>
+    <% end %>
+    <% 
+        if category.categoryid.to_s.length == 12 then
+    %>
+    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<%=category.categoryname%>&nbsp;</td>
+    <% end %>
+    <td align="left"><%= link_to '添加下级', :action => 'add_category', :categoryid => category.categoryid %></td>
+    <td align="left"><%= link_to "修改",{ # link_to options
+                           :controller => 'en_category', 
+                           :action => 'edit_category',
+                           :id => category}%>
+
+    </td>
+    <td align="left"><%= link_to "删除", { # link_to options
+                           :controller => 'en_category', 
+                           :action => 'delete_category',
+                           :id => category},
+                         { # html options
+                           :method  => :post,
+                           :confirm => "确定要删除 #{category.categoryname}?"
+                         } %>
+
+    </td>
+  </tr>
+  <% end %>
+</table>  
+</div>

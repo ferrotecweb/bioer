@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>The certificate view </title>
+<%= stylesheet_link_tag 'content_en' %>
+
+
+</head>
+<body>
+  <div id="zh">
+    <% for zs in @zs %>
+    <div id="zh1">
+      <%=zs.title%>
+    </div>
+    <div id="zh2"></div>
+    <div id="zh3">
+      <% if zs.summarypic != "" and zs.summarypic != nil %>
+      <% @categorylist = zs %>
+      <%=image_tag url_for_file_column(:categorylist,:summarypic) %>  
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</body>
+</html>

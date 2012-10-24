@@ -1,0 +1,2 @@
+module ServeareaHelper
+end

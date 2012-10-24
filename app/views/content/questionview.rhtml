@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title><%=@title%></title>
+<%= stylesheet_link_tag 'content' %>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function toggle(targetid,objN){   
+      var target=document.getElementById(targetid);
+      var aa=document.getElementById(objN)
+      if (target.style.display=="block"){
+          target.style.display="none";
+
+      } else {
+          target.style.display="block";
+          parent.document.all.frame1.height = document.body.scrollHeight; 
+      }
+}
+
+-->
+</script>
+</head>
+
+<body>
+<!--技术支持-->
+ <div id="yylybanner"><%=@title%></div>
+ <div id="jszc">
+   <div id="jszc1">
+   <table cellpadding="0" cellspacing="0" align="left" width="540">
+   <% if @jszc.size > 0  %>
+   <% 
+   @count = 0
+   for jszc in @jszc
+   @count = @count + 1
+   @str = "div" + @count.to_s
+   %>
+     <tr>
+  
+     <td valign="top">
+    <div id ="fzlc1">
+    <p id="aa" style="cursor:pointer" onClick="toggle('<%=@str%>','aa')" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'">
+<img src="/images/Help.jpg" alt="question ask" border="0" height="24" width="16"  style="float:left" />&nbsp;&nbsp;<%=jszc.title%>
+    </p>
+    </div> 
+    <div id="<%=@str%>"  class="divss1" >
+      <table width="540px" cellpadding="0" cellspacing="0" border="0" align="left">
+        <tr>
+          <td>
+            <div id="fzlccontent1">
+            <p><pre><%=jszc.summary%></pre></p>
+            </div> 
+          </td>
+          </tr>
+      </table>
+    </div>
+       </td>   
+     </tr>
+   <% end %>
+   <% else %>
+     <tr><td align="left">无下载数据</td></tr>
+   <% end %>
+   </table>
+ </div>
+    <br/>
+     <br/>
+    <div id="jszc1">
+   <table id="fy" cellpadding="0" cellspacing="0" align="right" width="550" >
+     <tr><td>
+    <%= will_paginate @jszc,
+    :inner_window => 1,
+    :outer_window => 1,
+    :prev_label => '上一页',
+    :next_label => '下一页'
+    %>
+    </td>
+    </tr>
+    </table>
+  </div>
+ </div>
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title><%=@title%></title>
+<%= stylesheet_link_tag 'content_en' %>
+</head>
+
+<body onload="parent.document.getElementById('frame1').style.height=this.document.body.scrollHeight">
+
+ <div id="yylybanner"><%=@title%></div>
+
+ <% for scyy in @scyy %>
+ <div id="yyly">
+   <% if scyy.summarypic != "" and scyy.summarypic != nil %>
+   <% @categorylist=scyy %>
+   <div id="yylyimg">
+    <%=image_tag url_for_file_column(:categorylist,:summarypic),:height => '106', :width => '170',:style=>'float:left' %>
+   </div>
+   <% end %>
+
+   <div id="yylycontent">
+    <div id="yylyhead"><%=scyy.title%></div>
+      <div class="clear"></div>
+    <div id="yylydetail">
+    <%=h(truncate(scyy.summary,80))%>
+    </div>
+
+    <div id="yylyp">
+      <a  style="cursor:pointer" onmousemove="this.style['color']='#ff0000'" onmouseout="this.style['color']='#000000'" onClick='window.open("/content/informatione?id=<%=scyy.id%>","","scrollbars=yes,width=500,height=300,top=(window.screen.availHeight-30-400)/2"),left= (window.screen.availWidth-10-600)/2' >More&nbsp;&raquo;</a>
+    </div>
+   </div> 
+ </div>
+  <div class="clear"></div>
+ <div id="bottomimg"></div>
+ <% end %>
+ <div id="fy">
+  <%= will_paginate @scyy,
+  :inner_window => 1,
+  :outer_window => 1,
+  :prev_label => 'Previous ',
+  :next_label => 'Next'
+  %>
+  </div>
+
+</body>
+</html>
