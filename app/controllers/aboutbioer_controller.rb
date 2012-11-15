@@ -1,5 +1,5 @@
 class AboutbioerController < ApplicationController
-  #关于博日
+  #关于博日的网页
   before_filter:initialization
   before_filter:aboutbioermenu
   layout "bioer"
